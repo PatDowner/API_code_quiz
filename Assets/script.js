@@ -33,32 +33,6 @@ let qList = [
 
 ]
 
-// Need to figure out how to make it randomly work its way through the questions from the above qList WITHOUT repeating any. Does the Math.random thingy have a way to avoid repetition?? Or do I create another array that puts the numbers 0-19 (if 20 questions total) in the array in random order, then work my way through that array in order to pull question numbers from??
-//For now, let's just get a random item number of the array
-let qNum = parseInt(Math.floor(Math.random() * qList.length))
-
-// Function to pick a question
-const pickQ = () => {
-
-
-  //replace content of question div in HTML
-  document.getElementById('question').innerHTML = `
-  <h3 class="display-4">
-    `+ qList[qNum].Q + `
-    </h3>
-  `
-
-
-  // Replace content of <p id="answers"></p> in HTML
-  document.getElementById('answers').innerHTML = `
-  <button id="btnA" class="btn btn-primary btn-lg">A. `+ qList[qNum].A + `</button>
-  <button id="btnB" class="btn btn-primary btn-lg">B. `+ qList[qNum].B + `</button>
-  <button id="btnC" class="btn btn-primary btn-lg">C. `+ qList[qNum].C + `</button>
-  <button id="btnD" class="btn btn-primary btn-lg">D. `+ qList[qNum].D + `</button>
-    `
-
-}
-
 
 // When the 'start' button is clicked...
 document.getElementById('start').addEventListener('click', (event) => {
@@ -66,64 +40,95 @@ document.getElementById('start').addEventListener('click', (event) => {
   // stop the default behavior of buttons
   event.preventDefault()
 
-  // will need to address start timer here somewhere
+
+  // Placeholder while function. Will cover in class today.
+  // while ('timer'>0) {
+  for (let i = 0; i < qList.length; i++) {
+
+    //replace content of question div in HTML
+    document.getElementById('question').innerHTML = `
+    <h3 class="display-4">
+    `+ qList[i].Q + `
+    </h3>
+    `
 
 
-  pickQ()
+    // Replace content of <p id="answers"></p> in HTML
+    document.getElementById('answers').innerHTML = `
+    <button id="btnA" class="btn btn-primary btn-lg">A. `+ qList[i].A + `</button>
+    <button id="btnB" class="btn btn-primary btn-lg">B. `+ qList[i].B + `</button>
+    <button id="btnC" class="btn btn-primary btn-lg">C. `+ qList[i].C + `</button>
+    <button id="btnD" class="btn btn-primary btn-lg">D. `+ qList[i].D + `</button>
+      `
 
-  let ans = qList[qNum].Correct
+    let ans = qList[i].Correct
 
-  console.log(ans)
+    console.log(ans)
 
-  //Whan answer btn ___ is clicked ...Replace content of <p id="feedback"></p> in HTML with ___
-  document.getElementById('btnA').addEventListener('click', (event) => {
-    if (qList[qNum].Correct === 'A') {
-      document.getElementById('feedback').innerHTML = 'Right!'
-      score++
-      console.log(score)
-      document.getElementById('score').innerHTML = `Score: ` + score
-    } else {
-      document.getElementById('feedback').innerHTML = 'Wrong!'
-      // subtract 10sec from timer (when I have that figured out)
-    }
-  })
+    //Whan answer btn ___ is clicked ...Replace content of <p id="feedback"></p> in HTML with ___
+    document.getElementById('btnA').addEventListener('click', (event) => {
 
-  document.getElementById('btnB').addEventListener('click', (event) => {
-    if (qList[qNum].Correct === 'B') {
-      document.getElementById('feedback').innerHTML = 'Right!'
-      score++
-      console.log(score)
-      document.getElementById('score').innerHTML = `Score: ` + score
-    } else {
-      document.getElementById('feedback').innerHTML = 'Wrong!'
-      // subtract 10sec from timer (when I have that figured out)
-    }
-  })
+      if (qList[i].Correct === 'A') {
+        document.getElementById('feedback').innerHTML = 'Right!'
+        // is there a way to change color of button briefly to reflect answer accuracy?
+        score++
+        console.log(score)
+        document.getElementById('score').innerHTML = `Score: ` + score
+        continue
+      } else {
+        document.getElementById('feedback').innerHTML = 'Wrong!'
+        // subtract 10sec from timer (when I have that figured out)
+        continue
+      }
+    })
 
-  document.getElementById('btnC').addEventListener('click', (event) => {
-    if (qList[qNum].Correct === 'C') {
-      document.getElementById('feedback').innerHTML = 'Right!'
-      score++
-      console.log(score)
-      document.getElementById('score').innerHTML = `Score: ` + score
-    } else {
-      document.getElementById('feedback').innerHTML = 'Wrong!'
-      // subtract 10sec from timer (when I have that figured out)
-    }
-  })
+    document.getElementById('btnB').addEventListener('click', (event) => {
+      if (qList[i].Correct === 'B') {
+        document.getElementById('feedback').innerHTML = 'Right!'
+        score++
+        console.log(score)
+        document.getElementById('score').innerHTML = `Score: ` + score
+        continue
+      } else {
+        document.getElementById('feedback').innerHTML = 'Wrong!'
+        // subtract 10sec from timer (when I have that figured out)
+        continue
+      }
+    })
 
-  document.getElementById('btnD').addEventListener('click', (event) => {
-    if (qList[qNum].Correct === 'D') {
-      document.getElementById('feedback').innerHTML = 'Right!'
-      score++
-      console.log(score)
-      document.getElementById('score').innerHTML = `Score: ` + score
-    } else {
-      document.getElementById('feedback').innerHTML = 'Wrong!'
-      // subtract 10sec from timer (when I have that figured out)
-    }
-  })
+    document.getElementById('btnC').addEventListener('click', (event) => {
+      if (qList[i].Correct === 'C') {
+        document.getElementById('feedback').innerHTML = 'Right!'
+        score++
+        console.log(score)
+        document.getElementById('score').innerHTML = `Score: ` + score
+        continue
+      } else {
+        document.getElementById('feedback').innerHTML = 'Wrong!'
+        // subtract 10sec from timer (when I have that figured out)
+        continue
+      }
+    })
+
+    document.getElementById('btnD').addEventListener('click', (event) => {
+      if (qList[i].Correct === 'D') {
+        document.getElementById('feedback').innerHTML = 'Right!'
+        score++
+        console.log(score)
+        document.getElementById('score').innerHTML = `Score: ` + score
+        continue
+      } else {
+        document.getElementById('feedback').innerHTML = 'Wrong!'
+        // subtract 10sec from timer (when I have that figured out)
+        continue
+      }
+    })
 
 
+    // end loop that's working through qList
+  }
+  // end of while '(timer)' > 0
+  // }
+  // end of function
 })
 
