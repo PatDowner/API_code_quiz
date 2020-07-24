@@ -12,30 +12,41 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <!-- my css -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./Assets/style.css">
 </head>
 <body>
   <!-- div for high score & timer -->
-  <div id="header">
-    <!-- Left side: View high score -->
+  <!-- play with placement later, look into possible offset columns https://getbootstrap.com/docs/4.0/layout/grid/#offset-classes -->
+  <div class="row justify-content-around">
 
+    <!-- Left side: View high score -->
+    <div class="col-4">
+      <a href="highscore.html">View Highscores</a>
+    </div>
+    
     <!-- Right side: Timer -->
+    <div class="col-4">
+      Timer Placeholder
+    </div>
+  </div>
+
+  <!-- The main part of the page -->
+  <div class="container">
+
+    <Main class="jumbotron">
+      <!-- Question -->
+      <div id="question">
+        <h3 class="display-4">Coding Quiz Challenge</h3>
+      </div>
+      <hr class="my-4">
+      <p id="answers" class="lead">
+        Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score time by 10 seconds!
+        <br><br>
+        <button id="start" class="btn btn-primary btn-lg">Start Quiz</button id="start">
+      </p>
+    </Main>
 
   </div>
-<div class="container">
-
-  <Main class="jumbotron">
-    <!-- Question -->
-    <h3 id="question" class="display-4">Coding Quiz Challenge</h3>
-    <hr class="my-4">
-    <p id="answers" class="lead">
-      Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score time by 10 seconds!
-    <br><br>
-    <button id="start" class="btn btn-primary btn-lg">Start Quiz</button id="start">
-    </p>
-  </Main>
-
-</div>
 
 
 
