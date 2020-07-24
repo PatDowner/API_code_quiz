@@ -75,7 +75,7 @@ document.getElementById('start').addEventListener('click', (event) => {
 
   console.log(ans)
 
-  //Whan answer ___ is clicked ...Replace content of <p id="feedback"></p> in HTML with ___
+  //Whan answer btn ___ is clicked ...Replace content of <p id="feedback"></p> in HTML with ___
   document.getElementById('btnA').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'A') {
       document.getElementById('feedback').innerHTML = 'Right!'
@@ -84,6 +84,7 @@ document.getElementById('start').addEventListener('click', (event) => {
       document.getElementById('score').innerHTML = `Score: ` + score
     } else {
       document.getElementById('feedback').innerHTML = 'Wrong!'
+      // subtract 10sec from timer (when I have that figured out)
     }
   })
 
@@ -95,6 +96,7 @@ document.getElementById('start').addEventListener('click', (event) => {
       document.getElementById('score').innerHTML = `Score: ` + score
     } else {
       document.getElementById('feedback').innerHTML = 'Wrong!'
+      // subtract 10sec from timer (when I have that figured out)
     }
   })
 
@@ -106,10 +108,10 @@ document.getElementById('start').addEventListener('click', (event) => {
       document.getElementById('score').innerHTML = `Score: ` + score
     } else {
       document.getElementById('feedback').innerHTML = 'Wrong!'
+      // subtract 10sec from timer (when I have that figured out)
     }
   })
 
-  //Whan answer D is clicked ...
   document.getElementById('btnD').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'D') {
       document.getElementById('feedback').innerHTML = 'Right!'
@@ -118,6 +120,7 @@ document.getElementById('start').addEventListener('click', (event) => {
       document.getElementById('score').innerHTML = `Score: ` + score
     } else {
       document.getElementById('feedback').innerHTML = 'Wrong!'
+      // subtract 10sec from timer (when I have that figured out)
     }
   })
 
