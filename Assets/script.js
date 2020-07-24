@@ -1,6 +1,7 @@
 // Score counter variable
 let score = 0
 
+
 // List of questions to pull from later
 let qList = [
 
@@ -44,7 +45,7 @@ const pickQ = () => {
   document.getElementById('question').innerHTML = `
   <h3 class="display-4">
     `+ qList[qNum].Q + `
-  </h3>
+    </h3>
   `
 
 
@@ -78,6 +79,9 @@ document.getElementById('start').addEventListener('click', (event) => {
   document.getElementById('btnA').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'A') {
       document.getElementById('feedback').innerHTML = 'Right!'
+      score++
+      console.log(score)
+      document.getElementById('score').innerHTML = `Score: ` + score
     } else {
       document.getElementById('feedback').innerHTML = 'Wrong!'
     }
@@ -86,6 +90,9 @@ document.getElementById('start').addEventListener('click', (event) => {
   document.getElementById('btnB').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'B') {
       document.getElementById('feedback').innerHTML = 'Right!'
+      score++
+      console.log(score)
+      document.getElementById('score').innerHTML = `Score: ` + score
     } else {
       document.getElementById('feedback').innerHTML = 'Wrong!'
     }
@@ -94,6 +101,9 @@ document.getElementById('start').addEventListener('click', (event) => {
   document.getElementById('btnC').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'C') {
       document.getElementById('feedback').innerHTML = 'Right!'
+      score++
+      console.log(score)
+      document.getElementById('score').innerHTML = `Score: ` + score
     } else {
       document.getElementById('feedback').innerHTML = 'Wrong!'
     }
@@ -103,10 +113,14 @@ document.getElementById('start').addEventListener('click', (event) => {
   document.getElementById('btnD').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'D') {
       document.getElementById('feedback').innerHTML = 'Right!'
+      score++
+      console.log(score)
+      document.getElementById('score').innerHTML = `Score: ` + score
     } else {
       document.getElementById('feedback').innerHTML = 'Wrong!'
     }
   })
+
 
 })
 

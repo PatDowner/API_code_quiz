@@ -17,16 +17,24 @@
 <body>
   <!-- div for high score & timer -->
   <!-- play with placement later, look into possible offset columns https://getbootstrap.com/docs/4.0/layout/grid/#offset-classes -->
-  <div class="row justify-content-around">
+  <div class="container">
 
-    <!-- Left side: View high score -->
-    <div class="col-4">
-      <a href="highscore.html">View Highscores</a>
-    </div>
-    
-    <!-- Right side: Timer -->
-    <div class="col-4">
-      Time left = <span id="timer"></span>
+    <div class="row">
+      
+      <!-- Left side: View high score -->
+      <div class="col-4">
+        <a href="highscore.html">View Highscores</a>
+      </div>
+      
+      <!-- Center: Current score -->
+      <div class="col-4">
+        <p id="score">Score: 0</p>
+      </div>
+      
+      <!-- Right side: Timer -->
+      <div class="col-4">
+        Time left: <span id="timer"></span>
+      </div>
     </div>
   </div>
 
