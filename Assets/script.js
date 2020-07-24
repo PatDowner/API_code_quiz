@@ -48,7 +48,7 @@ const pickQ = () => {
   `
 
 
-  // Replace content of answers p in HTML
+  // Replace content of <p id="answers"></p> in HTML
   document.getElementById('answers').innerHTML = `
   <button id="btnA" class="btn btn-primary btn-lg">A. `+ qList[qNum].A + `</button>
   <button id="btnB" class="btn btn-primary btn-lg">B. `+ qList[qNum].B + `</button>
@@ -74,40 +74,39 @@ document.getElementById('start').addEventListener('click', (event) => {
 
   console.log(ans)
 
-  //Whan answer A is clicked ...
+  //Whan answer ___ is clicked ...Replace content of <p id="feedback"></p> in HTML with ___
   document.getElementById('btnA').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'A') {
-      console.log('Right!')
+      document.getElementById('feedback').innerHTML = 'Right!'
     } else {
-      console.log('Wrong!')
+      document.getElementById('feedback').innerHTML = 'Wrong!'
     }
   })
 
-  //Whan answer B is clicked ...
   document.getElementById('btnB').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'B') {
-      console.log('Right!')
+      document.getElementById('feedback').innerHTML = 'Right!'
     } else {
-      console.log('Wrong!')
+      document.getElementById('feedback').innerHTML = 'Wrong!'
     }
   })
 
-  //Whan answer C is clicked ...
   document.getElementById('btnC').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'C') {
-      console.log('Right!')
+      document.getElementById('feedback').innerHTML = 'Right!'
     } else {
-      console.log('Wrong!')
+      document.getElementById('feedback').innerHTML = 'Wrong!'
     }
   })
 
   //Whan answer D is clicked ...
   document.getElementById('btnD').addEventListener('click', (event) => {
     if (qList[qNum].Correct === 'D') {
-      console.log('Right!')
+      document.getElementById('feedback').innerHTML = 'Right!'
     } else {
-      console.log('Wrong!')
+      document.getElementById('feedback').innerHTML = 'Wrong!'
     }
   })
+
 })
 
