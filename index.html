@@ -41,17 +41,18 @@
   <div class="container">
 
     <Main class="jumbotron">
-      <!-- Question -->
-      <div id="question">
+      <!-- At launch, this div contains the title of the quiz. After clicking Start Quiz button, this div will be replaced with the questions -->
+      <div id="question" class="question">
         <h3 class="display-4">Coding Quiz Challenge</h3>
       </div>
       <hr class="my-4">
-      <p id="answers" class="lead">
+      <!-- At launch, this p contains game directions. After clicking Start Quiz button, this p will be replaced with the answer choice buttons that correspond to the question above. -->
+      <p id="answers" class="lead answers">
         Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score time by 10 seconds!
         <br><br>
-        <button id="start" class="btn btn-primary btn-lg">Start Quiz</button id="start">
+        <button id="start" class="btn btn-primary btn-lg start">Start Quiz</button>
       </p>
-      <p id="feedback"></p>
+      <p id="answers" class="feedback"></p>
     </Main>
 
   </div>
