@@ -1,6 +1,6 @@
 // Note: This is mostly psuedo coding to outline an overall plan of attack.
 // Also, it does NOT address the timer issue. I'm gonna have to go back and look at what Devin did there to figure out how to work it in.
-
+// I probably need more to address accessing the highScore from the localStorage too
 
 
 
@@ -33,7 +33,7 @@ let qList = [
     B: 'Yellow',
     C: 'Blue',
     D: 'Green',
-    Correct: 'A'
+    Correct: 'C'
   },
   {
     Q: 'What character is not a Mario character?',
