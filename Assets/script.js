@@ -1,11 +1,11 @@
+// Set timer start value
+let count = 90
+
 // Score counter variable
 let score = 0
 
-
-// List of questions to pull from later
+// // List of questions to pull from later
 let qList = [
-
-  //Each item in the array is a new question (Q) with answers (A, B, C, and D) and the correct answer.
   {
     Q: 'What color is the sky?',
     A: 'Red',
@@ -24,62 +24,72 @@ let qList = [
   },
   {
     Q: 'The early bird gets the ____.',
-    A: 'coffee',
+    A: 'worm',
     B: 'prize',
     C: 'work',
-    D: 'worm',
+    D: 'coffee',
+    Correct: 'A'
+  },
+  {
+    Q: 'In which Toy Story movie does Woody decide to become a lost toy?',
+    A: 'Toy Story 1',
+    B: 'Toy Story 2',
+    C: 'Toy Story 3',
+    D: 'Toy Story 4',
     Correct: 'D'
-  }
+  }]
 
-]
-
-// When the 'start' button is clicked...
-if (event.target.classList.contains('start')) => {
-
-  // stop the default behavior of buttons
-  event.preventDefault()
-
-  // display first question by replacing the content of the question div in the HTML
-  // Question for Q: Is there any reason to NOT do it this way? Instead of the process where he has us create a separate <div>, give that div innerHTML and then place that new div into the element that has #question?
-  document.getElementById('question').innerHTML = `
-    <h3 class="display-4">
-    ${qList[i].Q}
-    </h3>
-    `
+console.log(qList)
 
 
-  // Replace content of p#answers in HTML with answers for 
-  document.getElementById('answers').innerHTML = `
-    <button id="btnA" class="btn btn-primary btn-lg ansBtn btnA">A. ${qList[i].A} </button>
-    <button id="btnB" class="btn btn-primary btn-lg ansBtn btnB">B. ${qList[i].B} </button>
-    <button id="btnC" class="btn btn-primary btn-lg ansBtn btnC">C. ${qList[i].C} </button>
-    <button id="btnD" class="btn btn-primary btn-lg ansBtn btnD">D. ${qList[i].D} </button>
-      `
-}
 
-// Do I need to address what happens if you click the High Score link??
 
 // is this where I start the timer??
 
-// Is this where I'd put the placeholder while function? Wrapped around global click listener??
 
+// Since I have a global listener later, do I need to address what happens if you click the High Score link??
+
+
+// Is this where I'd put the while timer > 0 function? Wrapped around global click listener??
 
 // global click listener
 document.addEventListener('click', event => {
 
-  //When ansBtn A || B || C || D is clicked ... 
-  if (event.target.classList.contains('ansBtn')) {
-    // variable which will help us define which answer button is the correct answer to first question
-    let ans = qList[i].Correct
+  // When the 'start' button is clicked...
+  if (event.target.classList.contains('start')) {
 
-    // log correct answer
-    console.log(ans)
+    // stop the default behavior of buttons
+    event.preventDefault()
+    console.log('start')
 
 
-    // if the ansBtn that was clicked was btnA
+    // display first question by replacing the content of the question div in the HTML
+    // Question for Q: Is there any reason to NOT do it this way? Instead of the process where he has us create a separate <div>, give that div innerHTML and then place that new div into the element that has #question?
+    document.getElementById('question').innerHTML = `
+    <h3 class="display-4">
+      ${qList[0].Q}
+      </h3>
+      `
+
+    // Replace content of p#answers in HTML with answers for 
+    document.getElementById('answers').innerHTML = `
+      <button id="btnA" class="btn btn-primary btn-lg btnA">A. ${qList[0].A} </button>
+      <button id="btnB" class="btn btn-primary btn-lg btnB">B. ${qList[0].B} </button>
+      <button id="btnC" class="btn btn-primary btn-lg btnC">C. ${qList[0].C} </button>
+      <button id="btnD" class="btn btn-primary btn-lg btnD">D. ${qList[0].D} </button>
+      `
+    console.log('question 1')
+    //End of if start clicked 
+  }
+
+  // Moving on to a set of else ifs that control what happens when when an answer to first question is clicked ... 
+  if (event.target.classList.contains(btnA || btnB || btnC || btnD)) {
+
+    // if btnA was clicked
     if (event.target.classList.contains('btnA')) {
+      console.log('clicked btnA')
       // if btnA is the correct answer to first question
-      if (qList[i].Correct === 'A') {
+      if (qList[0].Correct === 'A') {
         // display feedback that the answer was correct
         document.getElementById('feedback').innerHTML = 'Correct!'
         // is there a way to change color of button briefly to reflect answer accuracy?
@@ -100,13 +110,13 @@ document.addEventListener('click', event => {
       }
 
       // ends if answer btnA clicked
-      // start if not btnA then if btnB
+      // start if not click btnA then if btnB clicked
     } else if (event.target.classList.contains('btnB')) {
+      console.log('clicked btnB')
       // if btnB is the correct answer to first question
-      if (qList[i].Correct === 'B') {
+      if (qList[0].Correct === 'B') {
         // display feedback that the answer was correct
         document.getElementById('feedback').innerHTML = 'Correct!'
-        // is there a way to change color of button briefly to reflect answer accuracy?
         // increase score by 1
         score++
         // log: answer, correct, and current score
@@ -123,11 +133,12 @@ document.addEventListener('click', event => {
         // ends determining if btnB is correct answer
       }
 
-      // ends if answer btnA clicked
-      // starts if not btnA or btnB then if btnC
+      // ends if answer btnB clicked
+      // starts if not btnA or btnB then if btnC clicked
     } else if (event.target.classList.contains('btnC')) {
+      console.log('clicked btnC')
       // if btnC is the correct answer to first question
-      if (qList[i].Correct === 'C') {
+      if (qList[0].Correct === 'C') {
         // display feedback that the answer was correct
         document.getElementById('feedback').innerHTML = 'Correct!'
         // is there a way to change color of button briefly to reflect answer accuracy?
@@ -148,56 +159,67 @@ document.addEventListener('click', event => {
       }
 
       // ends if answer btnC clicked
-      // starts if not btnA or btnB or btnC then if btnD
+      // starts if not btnA or btnB or btnC then if btnD clicked
     } else if (event.target.classList.contains('btnD')) {
+      console.log('clicked btnD')
       // if we reach this point, it means all the other answer buttons (A, B, C) were wrong. Which means D must be correct.
       // display feedback that the answer was correct
-      document.getElementById('feedback').innerHTML = 'Correct!'
-      // is there a way to change color of button briefly to reflect answer accuracy?
-      // increase score by 1
-      score++
-      // log: answer, correct, and current score
-      console.log('D', 'correct', score)
-      // update displayed score in HTML
-      document.getElementById('score').innerHTML = `Score: ${score}`
-
-      // ends if answer btnD clicked
+      if (qList[0].Correct === 'D') {
+        document.getElementById('feedback').innerHTML = 'Correct!'
+        // is there a way to change color of button briefly to reflect answer accuracy?
+        // increase score by 1
+        score++
+        // log: answer, correct, and current score
+        console.log('D', 'correct', score)
+        // update displayed score in HTML
+        document.getElementById('score').innerHTML = `Score: ${score}`
+        //ends if btnD is correct
+      } else if (event.target.classList.contains('btnD')) {
+        if (qList[0].Correct === 'D') {
+          // display feedback that the answer was correct
+          document.getElementById('feedback').innerHTML = 'Correct!'
+          // is there a way to change color of button briefly to reflect answer accuracy?
+          // increase score by 1
+          score++
+          // log: answer, correct, and current score
+          console.log('C', 'correct', score)
+          // update displayed score in HTML
+          document.getElementById('score').innerHTML = `Score: ${score}`
+          // if the correct answer is NOT btnD
+        } else {
+          // display feedback that the answer was wrong.
+          document.getElementById('feedback').innerHTML = 'Wrong!'
+          // subtract 10sec from timer (when I have that figured out)
+          // log: answer, wrong, and current score
+          console.log('D', 'wrong', "lose 10 sec", score)
+          // ends determining if btnD is correct answer
+        }
+        // ends if answer btnD clicked
+      }
+      //Ends if A || B || C || D for question 1
     }
+    //Each item in the array is a new question (Q) with answers (A, B, C, and D) and the correct answer.
 
-    // ends if ansBtn clicked
-  }
-
-  // start loop for other questions. Start at i = 1 because I already handled i=0.
-  for (let i = 1; i < qList.length; i++) {
-
-    //replace content of question div in HTML
-    // Question for Q: Is there any reason to NOT do it this way? Instead of the process where he has us create a separate <div>, give that div innerHTML and then place that new div into the element that has #question?
-    document.getElementById('question').innerHTML = `
+    // start loop for other questions. Start at i = 1 because I already handled i=0.
+    for (let i = 1; i < qList.length; i++) {
+      console.log(loop)
+      //replace content of question div in HTML
+      // Question for Q: Is there any reason to NOT do it this way? Instead of the process where he has us create a separate <div>, give that div innerHTML and then place that new div into the element that has #question?
+      document.getElementById('question').innerHTML = `
       <h3 class="display-4">
       ${qList[i].Q}
       </h3>
       `
 
-    // Replace content of p#answers in HTML
-    document.getElementById('answers').innerHTML = `
-      <button id="btnA" class="btn btn-primary btn-lg">A. ${qList[i].A} </button>
+      // Replace content of p#answers in HTML
+      document.getElementById('answers').innerHTML = `
+      <button id="btnA" class="btn btn-primary btn-lg btnA">A. ${qList[i].A} </button>
       <button id="btnB" class="btn btn-primary btn-lg">B. ${qList[i].B} </button>
       <button id="btnC" class="btn btn-primary btn-lg">C. ${qList[i].C} </button>
       <button id="btnD" class="btn btn-primary btn-lg">D. ${qList[i].D} </button>
-        `
+      `
 
-    let ans = qList[i].Correct
-
-    console.log(ans)
-
-    //When ansBtn A || B || C || D is clicked ... 
-    if (event.target.classList.contains('ansBtn')) {
-      // variable which will help us define which answer button is the correct answer to first question
-      let ans = qList[i].Correct
-
-      // log correct answer
-      console.log(ans)
-
+      //When one of the answer buttons is clicked ... 
 
       // if the ansBtn that was clicked was btnA
       if (event.target.classList.contains('btnA')) {
@@ -273,30 +295,36 @@ document.addEventListener('click', event => {
         // ends if answer btnC clicked
         // starts if not btnA or btnB or btnC then if btnD
       } else if (event.target.classList.contains('btnD')) {
-        // if we reach this point, it means all the other answer buttons (A, B, C) were wrong. Which means D must be correct.
-        // display feedback that the answer was correct
-        document.getElementById('feedback').innerHTML = 'Correct!'
-        // is there a way to change color of button briefly to reflect answer accuracy?
-        // increase score by 1
-        score++
-        // log: answer, correct, and current score
-        console.log('D', 'correct', score)
-        // update displayed score in HTML
-        document.getElementById('score').innerHTML = `Score: ${score}`
-
+        if (qList[i].Correct === 'D') {
+          // display feedback that the answer was correct
+          document.getElementById('feedback').innerHTML = 'Correct!'
+          // is there a way to change color of button briefly to reflect answer accuracy?
+          // increase score by 1
+          score++
+          // log: answer, correct, and current score
+          console.log('C', 'correct', score)
+          // update displayed score in HTML
+          document.getElementById('score').innerHTML = `Score: ${score}`
+          // if the correct answer is NOT btnD
+        } else {
+          // display feedback that the answer was wrong.
+          document.getElementById('feedback').innerHTML = 'Wrong!'
+          // subtract 10sec from timer (when I have that figured out)
+          // log: answer, wrong, and current score
+          console.log('D', 'wrong', "lose 10 sec", score)
+          // ends determining if btnD is correct answer
+        }
         // ends if answer btnD clicked
       }
 
-      // ends if ansBtn clicked
+
+      // end loop that's working through qList
     }
 
-    // end loop that's working through qList
+    // else statement that's the catch all for all other global clicks
   }
 
   // end global click listener
 })
-  // end of while '(timer)' > 0
-  // }
-  // end of function
-})
-
+// end of while '(timer)' > 0
+// }
