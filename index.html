@@ -21,26 +21,24 @@
     <div class="row">
       
       <!-- Left side: View high score -->
-      <div class="col-4">
-        <a href="highscore.html" class="highScore">View High Scores</a>
-      </div>
+      <div id="highScore" class="col-4 highScore"></div>
       
       <!-- Center: Current score -->
       <div class="col-4 text-center">
-        <p id="score">Score: 0</p>
+        <p id="score"></p>
       </div>
       
       <!-- Right side: Timer -->
       <div class="col-4 text-right">
-        Time left: <span id="timer">00:00</span>
+        Time left: <span id="timer">90 seconds</span>
       </div>
     </div>
-  </div>
+  
 
   <!-- The main part of the page -->
-  <div class="container">
+  <div class="row">
 
-    <Main class="jumbotron">
+    <Main class="jumbotron col-12">
       <!-- At launch, this div contains the title of the quiz. After clicking Start Quiz button, this div will be replaced with the questions -->
       <div id="question" class="question">
         <h3 class="display-4">Coding Quiz Challenge</h3>
@@ -52,7 +50,7 @@
         <br><br>
         <button id="start" class="btn btn-primary btn-lg start">Start Quiz</button>
       </p>
-      <p id="feedback" class="feedback"></p> div
+      <p id="feedback" class="feedback"></p>
     </Main>
 
   </div>
