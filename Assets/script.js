@@ -33,7 +33,7 @@ let count = 90
 let qNum = 0
 
 // Set variable for which question button was clicked
-let ansClick = 'z'
+let ansClickv = 'x'
 
 // might need to set let dispHighScore = alert('see what I wrote below for text idea')
 
@@ -76,38 +76,13 @@ let qList = [
 console.log(qList)
 
 //create & define function newQ ()
-const newQ = function (x, y) {
-  qNum = x
-  console.log('qNum in newQ: ' + qNum)
-
-  ansClick = y
-  console.log('ansClick in newQ: ' + ansClick)
-
-  // Set variable that states answer button A was clicked
-  document.getElementById('btnA').addEventListener('click', event => {
-    ansClick = 'A'
-  })
-
-  // Set variable that states answer button B was clicked
-  document.getElementById('btnB').addEventListener('click', event => {
-    ansClick = 'B'
-  })
-
-  // Set variable that states answer button C was clicked
-  document.getElementById('btnC').addEventListener('click', event => {
-    ansClick = 'C'
-  })
-
-  // Set variable that states answer button D was clicked
-  document.getElementById('btnD').addEventListener('click', event => {
-    ansClick = 'D'
-  })
-
-  console.log('ansClick in function newQ after click: ' + ansClick)
+const newQ = function (x) {
+  ansCLickv = x
+  console.log('in function newQ: ' + ansCLickv)
 
 
   // this was ansResult()
-  if (qList[qNum].Correct === ansClick) {
+  if (qList[qNum].Correct === ansClickv) {
     console.log("answer result correctgiven")
     // run function isCorrect
     // tell the user their answer was correct
@@ -124,7 +99,7 @@ const newQ = function (x, y) {
     `
 
     // record which answer they clicked, the word correct, and the current score
-    console.log(ansClick, 'correct', score)
+    console.log(ansClickv, 'correct', score)
 
   } else {
     // otherwise, run function isWrong
@@ -138,29 +113,25 @@ const newQ = function (x, y) {
     count = count - 10
 
     // record which answer they clicked and the word wrong
-    console.log(ansClick, 'wrong')
+    console.log(ansCLickv, 'wrong')
   }
-  console.log('Current qNum = ' + qNum)
-  // Increase x by one so we can continue on to the next question
-  x++
-  console.log('Next qNum = ' + qNum)
+
+  // Increase qNum by one so we can continue on to the next question
+  qNum++
+  console.log('qNum = ' + qNum)
 
   // display next question
   document.getElementById('question').innerHTML = `
+  <h3 class="display-4">
   ${qList[qNum].Q}
+  </h3>
   `
   // Display next answer
-  document.getElementById('ansA').innerHTML = `
-    ${qList[qNum].A}
-    `
-  document.getElementById('ansB').innerHTML = `
-    ${qList[qNum].B}
-    `
-  document.getElementById('ansC').innerHTML = `
-    ${qList[qNum].C}
-    `
-  document.getElementById('ansD').innerHTML = `
-    ${qList[qNum].D}
+  document.getElementById('answers').innerHTML = `
+    <button id="btnA" class="btn btn-primary btn-lg btnA">A. ${qList[qNum].A} </button>
+    <button id="btnB" class="btn btn-primary btn-lg" btnB>B. ${qList[qNum].B} </button>
+    <button id="btnC" class="btn btn-primary btn-lg btnC">C. ${qList[qNum].C} </button>
+    <button id="btnD" class="btn btn-primary btn-lg btnD">D. ${qList[qNum].D} </button>
     `
 }
 
@@ -170,19 +141,13 @@ const newQ = function (x, y) {
 document.getElementById('start').addEventListener('click', event => {
   // Hide instructions & start button
   document.getElementById('quiz').classList.add('hide')
-  // Hide instructions & start button
-  document.getElementById('instructions').classList.add('hide')
-
-  document.getElementById('question').classList.remove('hide')
-  document.getElementById('answers').classList.remove('hide')
-  // document.getElementById('feedback').classList.remove('hide')
-  console.log('qNum' + qNum)
-  console.log('ansClick' + ansClick)
   // display first question
   document.getElementById('question').innerHTML = `
       ${ qList[qNum].Q}
     `
-  // Populate answers for first question btns
+  // Hide instructions & start button
+  document.getElementById('instructions').classList.add('hide')
+  // Populate answers for first question
   document.getElementById('ansA').innerHTML = `
   ${qList[qNum].A}
   `
@@ -195,9 +160,39 @@ document.getElementById('start').addEventListener('click', event => {
   document.getElementById('ansD').innerHTML = `
   ${qList[qNum].D}
   `
+  document.getElementById('question').classList.remove('hide')
+  document.getElementById('answers').classList.remove('hide')
 })
 
 
-console.log('qNum before newQ: ' + qNum)
-console.log('ansClick before newQ: ' + ansClick)
-newQ(qNum, ansClick)
+
+
+// Set variable that states answer button A was clicked
+document.getElementById('btnA').addEventListener('click', event => {
+  ansClickv = 'A'
+  console.log('before newQ: ' + ansClickv)
+  newQ(ansClickv)
+})
+
+// Set variable that states answer button B was clicked
+document.getElementById('btnB').addEventListener('click', event => {
+  ansClickv = 'B'
+  console.log('before newQ: ' + ansClickv)
+  newQ(ansClickv)
+})
+
+// Set variable that states answer button C was clicked
+document.getElementById('btnC').addEventListener('click', event => {
+  ansClickv = 'C'
+  console.log('before newQ: ' + ansClickv)
+  newQ(ansClickv)
+})
+
+// Set variable that states answer button D was clicked
+document.getElementById('btnD').addEventListener('click', event => {
+  ansClickv = 'D'
+  console.log('before newQ: ' + ansClickv)
+  newQ(ansClickv)
+})
+
+
