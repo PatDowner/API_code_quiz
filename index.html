@@ -45,10 +45,17 @@
       </div>
       <hr class="my-4">
       <!-- At launch, this p contains game directions. After clicking Start Quiz button, this p will be replaced with the answer choice buttons that correspond to the question above. -->
-      <p id="answers" class="lead answers">
-        Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will penalize your score time by 10 seconds!
+      <p id="instructions" class="lead instructions">
+        Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will
+        penalize your score time by 10 seconds!
         <br><br>
         <button id="start" class="btn btn-primary btn-lg start">Start Quiz</button>
+      </p>
+      <p id="answers" class="lead answers hide">
+        <button id="btnA" class="btn btn-primary btn-lg btnA">A. <span id="ansA"></span></button>
+        <button id="btnB" class="btn btn-primary btn-lg btnB">B. <span id="ansB"></span></button>
+        <button id="btnC" class="btn btn-primary btn-lg btnC">C. <span id="ansC"></span></button>
+        <button id="btnD" class="btn btn-primary btn-lg btnD">D. <span id="ansD"></span></button>
       </p>
       <p id="feedback" class="feedback"></p>
     </Main>

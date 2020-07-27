@@ -33,7 +33,7 @@ let count = 90
 let qNum = 0
 
 // Set variable for which question button was clicked
-let ansClickv = ''
+let ansClickv = 'x'
 
 // might need to set let dispHighScore = alert('see what I wrote below for text idea')
 
@@ -50,7 +50,7 @@ let qList = [
   {
     Q: 'What character is not a Mario character?',
     A: 'Mario',
-    B: 'Tails',
+    B: 'Donky Kong',
     C: 'Toad',
     D: 'Yoshi',
     Correct: 'B'
@@ -76,36 +76,36 @@ let qList = [
 console.log(qList)
 
 
-// create & define function ansClick ()
-// const ansClick = function () {
-//   // If that answer A is clicked...
-//   if (event.target.classList.contains('btnA')) {
-//     // Set variable that states answer button A was clicked
-//     ansClickv = 'A'
-//     console.log(ansClickv)
-//   }
-//   // If that answer B is clicked...
-//   else if (event.target.classList.contains('btnB')) {
-//     // Set variable that states answer button B was clicked
-//     ansClickv = 'B'
-//     console.log(ansClickv)
-//   }
-//   // If that answer C is clicked...
-//   else if (event.target.classList.contains('btnC')) {
-//     // Set variable that states answer button C was clicked
-//     ansClickv = 'C'
-//     console.log(ansClickv)
-//   }
-//   // If that answer D is clicked...
-//   else if (event.target.classList.contains('btnD')) {
-//     // Set variable that states answer button D was clicked
-//     ansClickv = 'D'
-//     console.log(ansClickv)
-//   }
+create & define function ansClick()
+const ansClick = function () {
+  // If that answer A is clicked...
+  if (event.target.classList.contains('btnA')) {
+    // Set variable that states answer button A was clicked
+    ansClickv = 'A'
+    console.log(ansClickv)
+  }
+  // If that answer B is clicked...
+  else if (event.target.classList.contains('btnB')) {
+    // Set variable that states answer button B was clicked
+    ansClickv = 'B'
+    console.log(ansClickv)
+  }
+  // If that answer C is clicked...
+  else if (event.target.classList.contains('btnC')) {
+    // Set variable that states answer button C was clicked
+    ansClickv = 'C'
+    console.log(ansClickv)
+  }
+  // If that answer D is clicked...
+  else if (event.target.classList.contains('btnD')) {
+    // Set variable that states answer button D was clicked
+    ansClickv = 'D'
+    console.log(ansClickv)
+  }
 
 
-//   // end ansClick ()
-// }
+  // end ansClick ()
+}
 
 
 // create & define function isCorrect ()
@@ -155,20 +155,20 @@ const newQ = function () {
 
   // Increase qNum by one so we can continue on to the next question
   qNum++
-
-  // display next question
-  document.getElementById('question').innerHTML = `
-  <h3 class="display-4">
-  ${qList[qNum].Q}
-  <h3>
-  `
-  // Display next answer
-  document.getElementById('answers').innerHTML = `
-          <button id="btnA" class="btn btn-primary btn-lg btnA">A. ${qList[qNum].A} </button>
-          <button id="btnB" class="btn btn-primary btn-lg" btnB>B. ${qList[qNum].B} </button>
-          <button id="btnC" class="btn btn-primary btn-lg btnC">C. ${qList[qNum].C} </button>
-          <button id="btnD" class="btn btn-primary btn-lg btnD">D. ${qList[qNum].D} </button>
-          `
+  console.log(qNum)
+  // // display next question
+  // document.getElementById('question').innerHTML = `
+  // <h3 class="display-4">
+  // ${qList[qNum].Q}
+  // <h3>
+  // `
+  // // Display next answer
+  // document.getElementById('answers').innerHTML = `
+  //         <button id="btnA" class="btn btn-primary btn-lg btnA">A. ${qList[qNum].A} </button>
+  //         <button id="btnB" class="btn btn-primary btn-lg" btnB>B. ${qList[qNum].B} </button>
+  //         <button id="btnC" class="btn btn-primary btn-lg btnC">C. ${qList[qNum].C} </button>
+  //         <button id="btnD" class="btn btn-primary btn-lg btnD">D. ${qList[qNum].D} </button>
+  //         `
   // end newQ ()
 }
 
@@ -176,110 +176,147 @@ const newQ = function () {
 
 // when the start button is clicked...
 document.getElementById('start').addEventListener('click', event => {
+  // Hide instructions & start button
+  document.getElementById('instructions').classList.add('hide')
   // display first question
   document.getElementById('question').innerHTML = `
   <h3 class="display-4">
   ${qList[qNum].Q}
   <h3>
   `
-  // Display first answer
-  document.getElementById('answers').innerHTML = `
-          <button id="btnA" class="btn btn-primary btn-lg btnA">A. ${qList[qNum].A} </button>
-          <button id="btnB" class="btn btn-primary btn-lg" btnB>B. ${qList[qNum].B} </button>
-          <button id="btnC" class="btn btn-primary btn-lg btnC">C. ${qList[qNum].C} </button>
-          <button id="btnD" class="btn btn-primary btn-lg btnD">D. ${qList[qNum].D} </button>
-          `
+  // Populate answers for first question
+  document.getElementById('ansA').innerHTML = `
+  ${qList[qNum].A}
+  `
+  document.getElementById('answers').classList.remove('hide')
 })
 
-
-// global click listener
-document.addEventListener('click', event => {
-
-  // If that answer A is clicked...
-  if (event.target.classList.contains('btnA')) {
-    // Set variable that states answer button A was clicked
-    ansClickv = 'A'
-    console.log(ansClickv)
-    newQ()
-  }
-  // If that answer B is clicked...
-  else if (event.target.classList.contains('btnB')) {
-    // Set variable that states answer button B was clicked
-    ansClickv = 'B'
-    console.log(ansClickv)
-    newQ()
-  }
-  // If that answer C is clicked...
-  else if (event.target.classList.contains('btnC')) {
-    // Set variable that states answer button C was clicked
-    ansClickv = 'C'
-    console.log(ansClickv)
-    newQ()
-  }
-  // If that answer D is clicked...
-  else if (event.target.classList.contains('btnD')) {
-    // Set variable that states answer button D was clicked
-    ansClickv = 'D'
-    console.log(ansClickv)
-    newQ()
-  }
-
-  // I remember Q saying there's a repeat function x times option
-  // Run ans() and newQ() in a repeat function for (qList.length - 1) times
-
-  // newQ()
-  // ansClick()
-  // newQ()
-  // ansClick()
-  // newQ()
-
-  // // Get the answer results for the last question
-  // ansClick()
-
-  // Display finish screen
-
-  // display first the word finished
-  document.getElementById('question').innerHTML = `
-    <h3 class="display-4">
-    Finished!!
-    <h3>
-    `
-
-
-
-
-  // if current score is more than previous high score...
-  if (score > highScore) {
-
-    // set score as current high Score
-    highScore = score
-
-    // display text congratulating user, displaying new high score, then an input field to put in user's initials.
-    document.getElementById('feedback').innerHTML = `
-      <p>Congratulations, you have achieved a new high score!!</p>
-      <p> Your final score is: ${score}</p>
-      <form>
-        <p>
-          <label for="initials">Input your initials: </label>
-          <input type="text" name="initials" id="initials" placeholder="your initials">
-          <button id='save'>Save</button>
-        </p>
-      </form>
-      `
-
-    // clicking button makes 2 things happen: 1) log set champ = value of input and put that and highScore to localStorage and 2. take you to highScore display.
-  } else {
-    // otherwise, just display final score
-    document.getElementById('answers').innerHTML = `
-    Your score: ${score}`
-  }
-
-
-
-
-
-
+// If that answer A is clicked...
+// if (document.getElementById('btnA')) {
+//   // Set variable that states answer button A was clicked
+document.getElementById('btnA').addEventListener('click', event => {
+  ansClickv = 'A'
+  console.log(ansClickv)
+  newQ()
 })
+// }
+// If that answer B is clicked...
+// else if (document.getElementById('btnB')) {
+//   // Set variable that states answer button B was clicked
+document.getElementById('btnB').addEventListener('click', event => {
+  ansClickv = 'B'
+  console.log(ansClickv)
+  newQ()
+})
+// }
+// If that answer C is clicked...
+// if (document.getElementById('btnC')) {
+//   // Set variable that states answer button C was clicked
+document.getElementById('btnC').addEventListener('click', event => {
+  ansClickv = 'C'
+  console.log(ansClickv)
+  newQ()
+})
+// }
+// // If that answer D is clicked...
+// if (document.getElementById('btnD')) {
+// Set variable that states answer button D was clicked
+document.getElementById('btnD').addEventListener('click', event => {
+  ansClickv = 'D'
+  console.log(ansClickv)
+  newQ()
+})
+// }
+
+
+// // global click listener
+// document.addEventListener('click', event => {
+
+//   // If that answer A is clicked...
+//   if (event.target.classList.contains('btnA')) {
+//     // Set variable that states answer button A was clicked
+//     ansClickv = 'A'
+//     console.log(ansClickv)
+//     newQ()
+//   }
+//   // If that answer B is clicked...
+//   else if (event.target.classList.contains('btnB')) {
+//     // Set variable that states answer button B was clicked
+//     ansClickv = 'B'
+//     console.log(ansClickv)
+//     newQ()
+//   }
+//   // If that answer C is clicked...
+//   else if (event.target.classList.contains('btnC')) {
+//     // Set variable that states answer button C was clicked
+//     ansClickv = 'C'
+//     console.log(ansClickv)
+//     newQ()
+//   }
+//   // If that answer D is clicked...
+//   else if (event.target.classList.contains('btnD')) {
+//     // Set variable that states answer button D was clicked
+//     ansClickv = 'D'
+//     console.log(ansClickv)
+//     newQ()
+//   }
+
+//   // I remember Q saying there's a repeat function x times option
+//   // Run ans() and newQ() in a repeat function for (qList.length - 1) times
+
+//   // newQ()
+//   // ansClick()
+//   // newQ()
+//   // ansClick()
+//   // newQ()
+
+//   // // Get the answer results for the last question
+//   // ansClick()
+
+//   // Display finish screen
+
+//   // display first the word finished
+//   document.getElementById('question').innerHTML = `
+//     <h3 class="display-4">
+//     Finished!!
+//     <h3>
+//     `
+
+
+
+
+//   // if current score is more than previous high score...
+//   if (score > highScore) {
+
+//     // set score as current high Score
+//     highScore = score
+
+//     // display text congratulating user, displaying new high score, then an input field to put in user's initials.
+//     document.getElementById('feedback').innerHTML = `
+//       <p>Congratulations, you have achieved a new high score!!</p>
+//       <p> Your final score is: ${score}</p>
+//       <form>
+//         <p>
+//           <label for="initials">Input your initials: </label>
+//           <input type="text" name="initials" id="initials" placeholder="your initials">
+//           <button id='save'>Save</button>
+//         </p>
+//       </form>
+//       `
+
+//     // clicking button makes 2 things happen: 1) log set champ = value of input and put that and highScore to localStorage and 2. take you to highScore display.
+//   } else {
+//     // otherwise, just display final score
+//     document.getElementById('answers').innerHTML = `
+//     Your score: ${score}`
+//   }
+
+
+
+
+
+
+// })
 
 
 
