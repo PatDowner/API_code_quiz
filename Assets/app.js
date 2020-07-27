@@ -11,11 +11,8 @@ let highScore = 0
 // variable to store the initials of highScore holder
 let champ = 'No current high score'
 
-// Display current high score in HTML
-document.getElementById('highScore').innerHTML = `
-High Score: ${highScore}<br>
-Set by: ${champ}
-`
+// set up array for logged scores
+let scoreLog = []
 
 // Score counter variable
 let score = 0
@@ -32,7 +29,7 @@ let count = 90
 let qNum = 0
 
 // Set variable for which question button was clicked
-let ansClickv = 'x'
+let ansClick = 'x'
 
 // might need to set let dispHighScore = alert('see what I wrote below for text idea')
 
@@ -76,13 +73,10 @@ console.log(qList)
 
 //create & define function newQ ()
 const newQ = function (x) {
-  ansCLickv = x
-  console.log('in function newQ: ' + ansCLickv)
-
+  ansCLick = x
 
   // this was ansResult()
-  if (qList[qNum].Correct === ansClickv) {
-    console.log("answer result correctgiven")
+  if (qList[qNum].Correct === ansClick) {
     // run function isCorrect
     // tell the user their answer was correct
     document.getElementById('feedback').innerHTML = `
@@ -98,26 +92,25 @@ const newQ = function (x) {
     `
 
     // record which answer they clicked, the word correct, and the current score
-    console.log(ansClickv, 'correct', score)
+    console.log(ansClick, ': correct', score)
 
   } else {
     // otherwise, run function isWrong
-    console.log("answer result wrong given")
     // isWrong()
     // tell the user their answer was correct
     document.getElementById('feedback').innerHTML = `
     Last answer: Wrong!
     `
-    // // subtract 10 sec from timer
-    // count = count - 10
+
+    // subtract 10 sec from timer
+    count = count - 10
 
     // record which answer they clicked and the word wrong
-    console.log(ansCLickv, 'wrong')
+    console.log(ansCLick, ': wrong')
   }
 
   // Increase qNum by one so we can continue on to the next question
   qNum++
-  console.log('qNum = ' + qNum)
 
   if (qNum < qList.length) {
 
@@ -143,7 +136,7 @@ const newQ = function (x) {
   ${ qList[qNum].D}
   `
   } else {
-    // hid all the id elements that contain question stuff
+    // hide all the id elements that contain question stuff
     document.getElementById('question').classList.add('hide')
     document.getElementById('answers').classList.add('hide')
     document.getElementById('feedback').classList.add('hide')
@@ -158,7 +151,7 @@ const newQ = function (x) {
       // display text congratulating user
       document.getElementById('finalScore').innerHTML = `
       <p className="lead">Congratulations! You have achieved a new high score!!</p>
-      <p className="lead">New High Score: ${score}</p>
+      <p className="lead">New High Score: ${highScore}</p>
       `
 
       // unhide finalScore element
@@ -168,10 +161,40 @@ const newQ = function (x) {
 
       document.getElementById('save').addEventListener('click', event => {
         event.preventDefault()
-        alert('highscore')
+
+        // clicking button makes 2 things happen:
+        // 1) log set champ = value of input and put that and highScore to localStorage
+        // set value of champ to be text of input
+        champ = document.getElementById('initials').value
+
+        // array for local storage
+        let scoreItem = {
+          highScore: highScore,
+          champ: champ
+        }
+
+        scoreLog.push(scoreItem)
+
+        console.log(scoreLog[0])
+
+
+        // Display current high score in HTML
+        document.getElementById('highScore').innerHTML = `
+        High Score: ${scoreLog[0].highScore}<br>
+        User: ${scoreLog[0].champ}
+        `
+
+        // store champ and highScore to localStorage
+        localStorage.setItem('scoreLog', JSON.stringify(scoreLog))
+
+        // 2. take you to highScore display.
+        alert(`
+        New high score saved!
+        High Score: ${highScore}
+        User: ${champ}
+        `)
       })
 
-      // clicking button makes 2 things happen: 1) log set champ = value of input and put that and highScore to localStorage and 2. take you to highScore display.
     } else {
       // otherwise, just display final score
       document.getElementById('finalScore').innerHTML = `
@@ -215,30 +238,26 @@ document.getElementById('start').addEventListener('click', event => {
 
 // Set variable that states answer button A was clicked
 document.getElementById('btnA').addEventListener('click', event => {
-  ansClickv = 'A'
-  console.log('before newQ: ' + ansClickv)
-  newQ(ansClickv)
+  ansClick = 'A'
+  newQ(ansClick)
 })
 
 // Set variable that states answer button B was clicked
 document.getElementById('btnB').addEventListener('click', event => {
-  ansClickv = 'B'
-  console.log('before newQ: ' + ansClickv)
-  newQ(ansClickv)
+  ansClick = 'B'
+  newQ(ansClick)
 })
 
 // Set variable that states answer button C was clicked
 document.getElementById('btnC').addEventListener('click', event => {
-  ansClickv = 'C'
-  console.log('before newQ: ' + ansClickv)
-  newQ(ansClickv)
+  ansClick = 'C'
+  newQ(ansClick)
 })
 
 // Set variable that states answer button D was clicked
 document.getElementById('btnD').addEventListener('click', event => {
-  ansClickv = 'D'
-  console.log('before newQ: ' + ansClickv)
-  newQ(ansClickv)
+  ansClick = 'D'
+  newQ(ansClick)
 })
 
 
