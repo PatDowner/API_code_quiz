@@ -33,7 +33,7 @@ let count = 90
 let qNum = 0
 
 // Set variable for which question button was clicked
-let ansClick = 'z'
+let ansClick = 'x'
 
 // might need to set let dispHighScore = alert('see what I wrote below for text idea')
 
@@ -77,11 +77,13 @@ console.log(qList)
 
 //create & define function newQ ()
 const newQ = function (x, y) {
-  qNum = x
-  console.log('qNum in newQ: ' + qNum)
+  x = qNum
+  console.log('qNum in newQ: ' + x)
 
-  ansClick = y
-  console.log('ansClick in newQ: ' + ansClick)
+  y = ansClick
+
+
+  console.log('ansClick in newQ: ' + y)
 
   // Set variable that states answer button A was clicked
   document.getElementById('btnA').addEventListener('click', event => {
@@ -107,7 +109,7 @@ const newQ = function (x, y) {
 
 
   // this was ansResult()
-  if (qList[qNum].Correct === ansClick) {
+  if (qList[x].Correct === ansClick) {
     console.log("answer result correctgiven")
     // run function isCorrect
     // tell the user their answer was correct
@@ -124,7 +126,7 @@ const newQ = function (x, y) {
     `
 
     // record which answer they clicked, the word correct, and the current score
-    console.log(ansClick, 'correct', score)
+    console.log(y, 'correct', score)
 
   } else {
     // otherwise, run function isWrong
@@ -138,29 +140,29 @@ const newQ = function (x, y) {
     count = count - 10
 
     // record which answer they clicked and the word wrong
-    console.log(ansClick, 'wrong')
+    console.log(y, 'wrong')
   }
-  console.log('Current qNum = ' + qNum)
+
   // Increase x by one so we can continue on to the next question
   x++
-  console.log('Next qNum = ' + qNum)
+  console.log('qNumx = ' + x)
 
   // display next question
   document.getElementById('question').innerHTML = `
-  ${qList[qNum].Q}
+  ${qList[x].Q}
   `
   // Display next answer
   document.getElementById('ansA').innerHTML = `
-    ${qList[qNum].A}
+    ${qList[x].A}
     `
   document.getElementById('ansB').innerHTML = `
-    ${qList[qNum].B}
+    ${qList[x].B}
     `
   document.getElementById('ansC').innerHTML = `
-    ${qList[qNum].C}
+    ${qList[x].C}
     `
   document.getElementById('ansD').innerHTML = `
-    ${qList[qNum].D}
+    ${qList[x].D}
     `
 }
 
