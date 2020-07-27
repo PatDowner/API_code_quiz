@@ -109,8 +109,8 @@ const newQ = function (x) {
     document.getElementById('feedback').innerHTML = `
     Last answer: Wrong!
     `
-    // subtract 10 sec from timer
-    count = count - 10
+    // // subtract 10 sec from timer
+    // count = count - 10
 
     // record which answer they clicked and the word wrong
     console.log(ansCLickv, 'wrong')
@@ -120,19 +120,66 @@ const newQ = function (x) {
   qNum++
   console.log('qNum = ' + qNum)
 
-  // display next question
-  document.getElementById('question').innerHTML = `
+  if (qNum < qList.length) {
+
+
+    // display next question
+    document.getElementById('question').innerHTML = `
   <h3 class="display-4">
   ${qList[qNum].Q}
   </h3>
   `
-  // Display next answer
-  document.getElementById('answers').innerHTML = `
-    <button id="btnA" class="btn btn-primary btn-lg btnA">A. ${qList[qNum].A} </button>
-    <button id="btnB" class="btn btn-primary btn-lg" btnB>B. ${qList[qNum].B} </button>
-    <button id="btnC" class="btn btn-primary btn-lg btnC">C. ${qList[qNum].C} </button>
-    <button id="btnD" class="btn btn-primary btn-lg btnD">D. ${qList[qNum].D} </button>
-    `
+    // Display next answer
+
+    document.getElementById('ansA').innerHTML = `
+  ${ qList[qNum].A}
+  `
+    document.getElementById('ansB').innerHTML = `
+  ${ qList[qNum].B}
+  `
+    document.getElementById('ansC').innerHTML = `
+  ${ qList[qNum].C}
+  `
+    document.getElementById('ansD').innerHTML = `
+  ${ qList[qNum].D}
+  `
+  } else {
+    // hid all the id elements that contain question stuff
+    document.getElementById('question').classList.add('hide')
+    document.getElementById('answers').classList.add('hide')
+    document.getElementById('feedback').classList.add('hide')
+
+    // show finished
+    document.getElementById('finished').classList.remove('hide')
+
+    if (score > highScore) {
+      // set score as current highScore
+      highScore = score
+
+      // display text congratulating user
+      document.getElementById('finalScore').innerHTML = `
+      <p className="lead">Congratulations! You have achieved a new high score!!</p>
+      <p className="lead">New High Score: ${score}</p>
+      `
+
+      // unhide finalScore element
+      document.getElementById('finalScore').classList.remove('hide')
+
+      document.getElementById('initialsSet').classList.remove('hide')
+
+      document.getElementById('save').addEventListener('click', event => {
+        event.preventDefault()
+        alert('highscore')
+      })
+
+      // clicking button makes 2 things happen: 1) log set champ = value of input and put that and highScore to localStorage and 2. take you to highScore display.
+    } else {
+      // otherwise, just display final score
+      document.getElementById('finalScore').innerHTML = `
+    Your score: ${score}`
+    }
+
+  }
 }
 
 
@@ -144,7 +191,7 @@ document.getElementById('start').addEventListener('click', event => {
   // display first question
   document.getElementById('question').innerHTML = `
       ${ qList[qNum].Q}
-    `
+      `
   // Hide instructions & start button
   document.getElementById('instructions').classList.add('hide')
   // Populate answers for first question

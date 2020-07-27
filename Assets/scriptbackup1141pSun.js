@@ -305,12 +305,12 @@ document.getElementById('btnD').addEventListener('click', event => {
 //       </form>
 //       `
 
-//     // clicking button makes 2 things happen: 1) log set champ = value of input and put that and highScore to localStorage and 2. take you to highScore display.
-//   } else {
-//     // otherwise, just display final score
-//     document.getElementById('answers').innerHTML = `
-//     Your score: ${score}`
-//   }
+    // clicking button makes 2 things happen: 1) log set champ = value of input and put that and highScore to localStorage and 2. take you to highScore display.
+  } else {
+    // otherwise, just display final score
+    document.getElementById('answers').innerHTML = `
+    Your score: ${score}`
+  }
 
 
 

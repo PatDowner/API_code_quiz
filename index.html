@@ -44,7 +44,10 @@
         <h3 id="quiz" class="display-4">Coding Quiz Challenge</h3>
       </div>
       <div class="quiz">
-        <h3 id="question" class="display-4 hide"></h3>
+        <h3 id="question" class="display-4 question hide"></h3>
+      </div>
+      <div class="quiz">
+        <h3 id="finished" class="display-4 finished hide">Finished!!</h3>
       </div>
       <hr class="my-4">
       <!-- At launch, this p contains game directions. After clicking Start Quiz button, this p will be replaced with the answer choice buttons that correspond to the question above. -->
@@ -61,6 +64,16 @@
         <button id="btnD" class="btn btn-primary btn-lg btnD">D. <span id="ansD"></span></button>
       </p>
       <p id="feedback" class="feedback"></p>
+      <p id="finalScore" class="finalScore hide"></p>
+      <p id="setHS" class="setHS">
+        <form id="initialsSet" class="hide">
+          <p>
+            <label for="initials">Your initials: </label>
+            <input type="text" name="initials" id="initials" placeholder="your initials">
+            <button id="save" class="btn btn-primary btn-lg save">Save High Score</button>
+          </p>
+        </form>
+      </p>
     </Main>
 
   </div>
@@ -80,6 +93,6 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
   <!-- my JS -->
-  <script src="./Assets/script.js"></script>
+  <script src="./Assets/app.js"></script>
 </body>
 </html>
