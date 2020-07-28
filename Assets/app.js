@@ -2,17 +2,27 @@
 // I probably need more to address accessing the highScore from the localStorage too
 
 
-
-// need something here to pull old highScore info OR allow for highScore = 0
-
 // set high score to zero for now. Will update later.
 let highScore = 0
 
 // variable to store the initials of highScore holder
 let champ = 'No current high score'
 
-// set up array for logged scores
-let scoreLog = []
+// need something here to pull old highScore info OR allow for highScore = 0
+// recalls or set up array for logged scores
+let scoreLog = JSON.parse(localStorage.getItem('scoreLog')) || []
+
+for (let i = 0; i < scoreLog.length; i++) {
+  highScore = scoreLog[i].highScore
+  champ = scoreLog[i].champ
+}
+
+// Display current high score in HTML
+document.getElementById('highScore').innerHTML = `
+        High Score: ${highScore}<br>
+        User: ${champ}
+        `
+
 
 // Score counter variable
 let score = 0
@@ -167,25 +177,26 @@ const newQ = function (x) {
         // set value of champ to be text of input
         champ = document.getElementById('initials').value
 
+
         // array for local storage
         let scoreItem = {
           highScore: highScore,
           champ: champ
         }
-
+        // localStorage.setItem('scoreLog', scoreItem)
         scoreLog.push(scoreItem)
 
-        console.log(scoreLog[0])
-
-
-        // Display current high score in HTML
-        document.getElementById('highScore').innerHTML = `
-        High Score: ${scoreLog[0].highScore}<br>
-        User: ${scoreLog[0].champ}
-        `
 
         // store champ and highScore to localStorage
         localStorage.setItem('scoreLog', JSON.stringify(scoreLog))
+
+        console.log(scoreLog[0])
+        if (scoreLog.length > 1) {
+          scoreLog.splice(0, 1)
+          console.log(scoreLog[0])
+        }
+
+
 
         // 2. take you to highScore display.
         alert(`
@@ -193,12 +204,20 @@ const newQ = function (x) {
         High Score: ${highScore}
         User: ${champ}
         `)
+
       })
 
     } else {
       // otherwise, just display final score
       document.getElementById('finalScore').innerHTML = `
-    Your score: ${score}`
+    <p>Your score: ${score}</p>
+    <p>High score: ${highScore}<br>
+    (by user: ${champ})</p>
+    `
+
+      // unhide finalScore element
+      document.getElementById('finalScore').classList.remove('hide')
+
     }
 
   }
