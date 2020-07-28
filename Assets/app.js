@@ -19,9 +19,9 @@ for (let i = 0; i < scoreLog.length; i++) {
 
 // Display current high score in HTML
 document.getElementById('highScore').innerHTML = `
-        High Score: ${highScore}<br>
-        User: ${champ}
-        `
+High Score: ${highScore}<br>
+User: ${champ}
+`
 
 
 // Score counter variable
@@ -161,7 +161,7 @@ const newQ = function (x) {
       // display text congratulating user
       document.getElementById('finalScore').innerHTML = `
       <p className="lead">Congratulations! You have achieved a new high score!!</p>
-      <p className="lead">New High Score: ${highScore}</p>
+      <p className="lead">Your Score: ${highScore}</p>
       `
 
       // unhide finalScore element
@@ -190,33 +190,37 @@ const newQ = function (x) {
         // store champ and highScore to localStorage
         localStorage.setItem('scoreLog', JSON.stringify(scoreLog))
 
-        console.log(scoreLog[0])
+        console.log(scoreLog.length)
         if (scoreLog.length > 1) {
           scoreLog.splice(0, 1)
-          console.log(scoreLog[0])
+          console.log(scoreLog.length)
         }
 
+        document.getElementById('input').innerHTML = `
+        <p>New high score saved!<br>
+        High Score: ${highScore}<br>
+        User: ${champ}</p>
+        `
 
-
-        // 2. take you to highScore display.
-        alert(`
-        New high score saved!
-        High Score: ${highScore}
+        // Display current high score in HTML
+        document.getElementById('highScore').innerHTML = `
+        High Score: ${highScore}<br>
         User: ${champ}
-        `)
-
+        `
+        document.getElementById('startOver').classList.remove('hide')
       })
 
     } else {
       // otherwise, just display final score
       document.getElementById('finalScore').innerHTML = `
-    <p>Your score: ${score}</p>
-    <p>High score: ${highScore}<br>
-    (by user: ${champ})</p>
-    `
+      <p>Your score: ${score}</p>
+      <p>High score: ${highScore}<br>
+      (by user: ${champ})</p>
+      `
 
       // unhide finalScore element
       document.getElementById('finalScore').classList.remove('hide')
+      document.getElementById('startOver').classList.remove('hide')
 
     }
 
@@ -227,6 +231,7 @@ const newQ = function (x) {
 
 // when the start button is clicked...
 document.getElementById('start').addEventListener('click', event => {
+  // preventDefault()
   // Hide instructions & start button
   document.getElementById('quiz').classList.add('hide')
   // display first question
@@ -257,26 +262,32 @@ document.getElementById('start').addEventListener('click', event => {
 
 // Set variable that states answer button A was clicked
 document.getElementById('btnA').addEventListener('click', event => {
+  // preventDefault()
   ansClick = 'A'
   newQ(ansClick)
 })
 
 // Set variable that states answer button B was clicked
 document.getElementById('btnB').addEventListener('click', event => {
+  // preventDefault()
   ansClick = 'B'
   newQ(ansClick)
 })
 
 // Set variable that states answer button C was clicked
 document.getElementById('btnC').addEventListener('click', event => {
+  // preventDefault()
   ansClick = 'C'
   newQ(ansClick)
 })
 
 // Set variable that states answer button D was clicked
 document.getElementById('btnD').addEventListener('click', event => {
+  // preventDefault()
   ansClick = 'D'
   newQ(ansClick)
 })
 
-
+document.getElementById('startOver').addEventListener('click', event => {
+  location.reload()
+})
