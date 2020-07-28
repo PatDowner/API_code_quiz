@@ -33,7 +33,7 @@ Current Score: ${score}
 `
 
 // Set timer start value
-let count = 90
+let seconds = 90
 
 // set question number to zero. Gonna use this to help work through the series of questions.
 let qNum = 0
@@ -113,7 +113,7 @@ const newQ = function (x) {
     `
 
     // subtract 10 sec from timer
-    count = count - 10
+    seconds = seconds - 10
 
     // record which answer they clicked and the word wrong
     console.log(ansCLick, ': wrong')
@@ -127,7 +127,7 @@ const newQ = function (x) {
 
     // display next question
     document.getElementById('question').innerHTML = `
-  <h3 class="display-4">
+  <h3 class="display-5">
   ${qList[qNum].Q}
   </h3>
   `
@@ -146,88 +146,89 @@ const newQ = function (x) {
   ${ qList[qNum].D}
   `
   } else {
-    // hide all the id elements that contain question stuff
-    document.getElementById('question').classList.add('hide')
-    document.getElementById('answers').classList.add('hide')
-    document.getElementById('feedback').classList.add('hide')
+    endGame()
+  }
+}
 
-    // show finished
-    document.getElementById('finished').classList.remove('hide')
+const endGame = () => {
+  // hide all the id elements that contain question stuff
+  document.getElementById('question').classList.add('hide')
+  document.getElementById('answers').classList.add('hide')
+  document.getElementById('feedback').classList.add('hide')
 
-    if (score > highScore) {
-      // set score as current highScore
-      highScore = score
+  // show finished
+  document.getElementById('finished').classList.remove('hide')
 
-      // display text congratulating user
-      document.getElementById('finalScore').innerHTML = `
+  if (score > highScore) {
+    // set score as current highScore
+    highScore = score
+
+    // display text congratulating user
+    document.getElementById('finalScore').innerHTML = `
       <p className="lead">Congratulations! You have achieved a new high score!!</p>
       <p className="lead">Your Score: ${highScore}</p>
       `
 
-      // unhide finalScore element
-      document.getElementById('finalScore').classList.remove('hide')
+    // unhide finalScore element
+    document.getElementById('finalScore').classList.remove('hide')
 
-      document.getElementById('initialsSet').classList.remove('hide')
+    document.getElementById('initialsSet').classList.remove('hide')
 
-      document.getElementById('save').addEventListener('click', event => {
-        event.preventDefault()
+    document.getElementById('save').addEventListener('click', event => {
+      event.preventDefault()
 
-        // clicking button makes 2 things happen:
-        // 1) log set champ = value of input and put that and highScore to localStorage
-        // set value of champ to be text of input
-        champ = document.getElementById('initials').value
-
-
-        // array for local storage
-        let scoreItem = {
-          highScore: highScore,
-          champ: champ
-        }
-        // localStorage.setItem('scoreLog', scoreItem)
-        scoreLog.push(scoreItem)
+      // clicking button makes 2 things happen:
+      // 1) log set champ = value of input and put that and highScore to localStorage
+      // set value of champ to be text of input
+      champ = document.getElementById('initials').value
 
 
-        // store champ and highScore to localStorage
-        localStorage.setItem('scoreLog', JSON.stringify(scoreLog))
+      // array for local storage
+      let scoreItem = {
+        highScore: highScore,
+        champ: champ
+      }
+      // localStorage.setItem('scoreLog', scoreItem)
+      scoreLog.push(scoreItem)
 
+
+      // store champ and highScore to localStorage
+      localStorage.setItem('scoreLog', JSON.stringify(scoreLog))
+
+      console.log(scoreLog.length)
+      if (scoreLog.length > 1) {
+        scoreLog.splice(0, 1)
         console.log(scoreLog.length)
-        if (scoreLog.length > 1) {
-          scoreLog.splice(0, 1)
-          console.log(scoreLog.length)
-        }
+      }
 
-        document.getElementById('input').innerHTML = `
+      document.getElementById('input').innerHTML = `
         <p>New high score saved!<br>
         High Score: ${highScore}<br>
         User: ${champ}</p>
         `
 
-        // Display current high score in HTML
-        document.getElementById('highScore').innerHTML = `
+      // Display current high score in HTML
+      document.getElementById('highScore').innerHTML = `
         High Score: ${highScore}<br>
         User: ${champ}
         `
-        document.getElementById('startOver').classList.remove('hide')
-      })
+      document.getElementById('startOver').classList.remove('hide')
+    })
 
-    } else {
-      // otherwise, just display final score
-      document.getElementById('finalScore').innerHTML = `
+  } else {
+    // otherwise, just display final score
+    document.getElementById('finalScore').innerHTML = `
       <p>Your score: ${score}</p>
       <p>High score: ${highScore}<br>
       (by user: ${champ})</p>
       `
 
-      // unhide finalScore element
-      document.getElementById('finalScore').classList.remove('hide')
-      document.getElementById('startOver').classList.remove('hide')
-
-    }
+    // unhide finalScore element
+    document.getElementById('finalScore').classList.remove('hide')
+    document.getElementById('startOver').classList.remove('hide')
 
   }
 }
-
-
 
 // when the start button is clicked...
 document.getElementById('start').addEventListener('click', event => {
@@ -255,6 +256,16 @@ document.getElementById('start').addEventListener('click', event => {
   `
   document.getElementById('question').classList.remove('hide')
   document.getElementById('answers').classList.remove('hide')
+
+  timer = setInterval(() => {
+    seconds--
+    document.getElementById('time').textContent = seconds
+
+    if (seconds <= 0) {
+      clearInterval(timer)
+      endGame()
+    }
+  }, 1000);
 })
 
 

@@ -30,7 +30,7 @@
       
       <!-- Right side: Timer -->
       <div class="col-4 text-right">
-        Time left: <span id="timer">90 seconds</span>
+        Time left: <span id="time">90</span> seconds
       </div>
     </div>
   
@@ -45,7 +45,7 @@
       </div>
       <div class="quiz">
         <p id="feedback" class="feedback"></p>
-        <h3 id="question" class="display-4 question hide"></h3>
+        <h3 id="question" class="display-5 question hide"></h3>
       </div>
       <div class="quiz">
         <h3 id="finished" class="display-4 finished hide">Finished!!</h3>
@@ -54,7 +54,7 @@
       <!-- At launch, this p contains game directions. After clicking Start Quiz button, this p will be replaced with the answer choice buttons that correspond to the question above. -->
       <p id="instructions" class="lead instructions">
         Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answers will
-        penalize your score time by 10 seconds!
+        penalize your score time by 10 seconds! Timer starts when you click the start quiz button.
         <br><br>
         <button id="start" class="btn btn-primary btn-lg start">Start Quiz</button>
       </p>
