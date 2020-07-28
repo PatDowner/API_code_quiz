@@ -12,17 +12,17 @@ let user = 'No current high score'
 // recalls or set up array for logged scores
 let scoreLog = JSON.parse(localStorage.getItem('scoreLog')) || []
 
+// if there's data in localStorage for scoreLog, use that to set the highScore and user
 for (let i = 0; i < scoreLog.length; i++) {
   highScore = scoreLog[i].highScore
   user = scoreLog[i].user
 }
 
-// Display current high score in HTML
+// Display current highScore in HTML
 document.getElementById('highScore').innerHTML = `
 High Score: ${highScore}<br>
 User: ${user}
 `
-
 
 // Score counter variable
 let score = 0
@@ -39,9 +39,10 @@ let seconds = 90
 let qNum = 0
 
 // Set variable for which question button was clicked
-let ansClick = 'x'
+let ansClick = ''
 
 // might need to set let dispHighScore = alert('see what I wrote below for text idea')
+
 
 // // List of questions to pull from later
 let qList = [
@@ -76,8 +77,52 @@ let qList = [
     C: 'Toy Story 3',
     D: 'Toy Story 4',
     Correct: 'D'
-  },
-]
+  }]
+
+
+// // new format of qList
+// let qList = [
+//   {
+//     Q: 'What color is the sky?',
+//     Correct: 'C',
+//     answers: [
+//       'Red',
+//       'Yellow',
+//       'Blue',
+//       'Green'
+//     ]
+//   },
+//   {
+//     Q: 'What character is not a Mario character?',
+//     Correct: 'B',
+//     answers: [
+//       'Mario',
+//       'Donky Kong',
+//       'Toad',
+//       'Yoshi'
+//     ]
+//   },
+//   {
+//     Q: 'The early bird gets the ____.',
+//     Correct: 'A',
+//     answers: [
+//       'worm',
+//       'prize',
+//       'work',
+//       'coffee'
+//     ]
+//   },
+//   {
+//     Q: 'In which Toy Story movie does Woody decide to become a lost toy?',
+//     Correct: 'D',
+//     answers: [
+//       'Toy Story 1',
+//       'Toy Story 2',
+//       'Toy Story 3',
+//       'Toy Story 4'
+//     ]
+//   }
+// ]
 
 console.log(qList)
 
@@ -88,35 +133,11 @@ const newQ = function (x) {
   // this was ansResult()
   if (qList[qNum].Correct === ansClick) {
     // run function isCorrect
-    // tell the user their answer was correct
-    document.getElementById('feedback').innerHTML = `
-    Last answer: Correct!
-    `
-
-    // increase score by 1
-    score++
-
-    // Display current score in HTML
-    document.getElementById('score').innerHTML = `
-    Current Score: ${score}
-    `
-
-    // record which answer they clicked, the word correct, and the current score
-    console.log(ansClick, ': correct', score)
+    isCorrect()
 
   } else {
     // otherwise, run function isWrong
-    // isWrong()
-    // tell the user their answer was correct
-    document.getElementById('feedback').innerHTML = `
-    Last answer: Wrong!
-    `
-
-    // subtract 10 sec from timer
-    seconds = seconds - 10
-
-    // record which answer they clicked and the word wrong
-    console.log(ansCLick, ': wrong')
+    isWrong()
   }
 
   // Increase qNum by one so we can continue on to the next question
@@ -124,30 +145,68 @@ const newQ = function (x) {
 
   if (qNum < qList.length) {
 
+    getQ()
 
-    // display next question
-    document.getElementById('question').innerHTML = `
+    getAns()
+  } else {
+    endGame()
+  }
+}
+
+const isCorrect = () => {
+  // tell the user their answer was correct
+  document.getElementById('feedback').innerHTML = `
+  Last answer: Correct!
+  `
+
+  // increase score by 1
+  score++
+
+  // Display current score in HTML
+  document.getElementById('score').innerHTML = `
+  Current Score: ${score}
+  `
+
+  // record which answer they clicked, the word correct, and the current score
+  console.log(ansClick, ': correct', score)
+}
+
+const isWrong = () => {
+  // tell the user their answer was wrong
+  document.getElementById('feedback').innerHTML = `
+  Last answer: Wrong!
+  `
+
+  // subtract 10 sec from timer
+  seconds = seconds - 10
+
+  // record which answer they clicked and the word wrong
+  console.log(ansCLick, ': wrong')
+}
+
+const getQ = () => {
+  // display next question
+  document.getElementById('question').innerHTML = `
   <h3 class="display-5">
   ${qList[qNum].Q}
   </h3>
   `
-    // Display next answer
+}
 
-    document.getElementById('ansA').innerHTML = `
+const getAns = () => {
+  // Display next answer  
+  document.getElementById('ansA').innerHTML = `
   ${ qList[qNum].A}
   `
-    document.getElementById('ansB').innerHTML = `
+  document.getElementById('ansB').innerHTML = `
   ${ qList[qNum].B}
   `
-    document.getElementById('ansC').innerHTML = `
+  document.getElementById('ansC').innerHTML = `
   ${ qList[qNum].C}
   `
-    document.getElementById('ansD').innerHTML = `
+  document.getElementById('ansD').innerHTML = `
   ${ qList[qNum].D}
   `
-  } else {
-    endGame()
-  }
 }
 
 const endGame = () => {
