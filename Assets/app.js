@@ -20,7 +20,7 @@ for (let i = 0; i < scoreLog.length; i++) {
 
 // Display current highScore in HTML
 document.getElementById('highScore').innerHTML = `
-High Score: ${highScore}<br>
+High Score:&nbsp;${highScore}<br>
 User: ${userName}
 `
 
