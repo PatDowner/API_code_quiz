@@ -6,7 +6,7 @@
 let highScore = 0
 
 // variable to store the initials of highScore holder
-let champ = 'No current high score'
+let user = 'No current high score'
 
 // need something here to pull old highScore info OR allow for highScore = 0
 // recalls or set up array for logged scores
@@ -14,13 +14,13 @@ let scoreLog = JSON.parse(localStorage.getItem('scoreLog')) || []
 
 for (let i = 0; i < scoreLog.length; i++) {
   highScore = scoreLog[i].highScore
-  champ = scoreLog[i].champ
+  user = scoreLog[i].user
 }
 
 // Display current high score in HTML
 document.getElementById('highScore').innerHTML = `
 High Score: ${highScore}<br>
-User: ${champ}
+User: ${user}
 `
 
 
@@ -178,23 +178,24 @@ const endGame = () => {
       event.preventDefault()
 
       // clicking button makes 2 things happen:
-      // 1) log set champ = value of input and put that and highScore to localStorage
-      // set value of champ to be text of input
-      champ = document.getElementById('initials').value
+      // 1) log set user = value of input and put that and highScore to localStorage
+      // set value of user to be text of input
+      user = document.getElementById('initials').value
 
 
       // array for local storage
       let scoreItem = {
         highScore: highScore,
-        champ: champ
+        user: user
       }
       // localStorage.setItem('scoreLog', scoreItem)
       scoreLog.push(scoreItem)
 
 
-      // store champ and highScore to localStorage
+      // store user and highScore to localStorage
       localStorage.setItem('scoreLog', JSON.stringify(scoreLog))
 
+      // not sure why this isn't working
       console.log(scoreLog.length)
       if (scoreLog.length > 1) {
         scoreLog.splice(0, 1)
@@ -204,13 +205,13 @@ const endGame = () => {
       document.getElementById('input').innerHTML = `
         <p>New high score saved!<br>
         High Score: ${highScore}<br>
-        User: ${champ}</p>
+        User: ${user}</p>
         `
 
       // Display current high score in HTML
       document.getElementById('highScore').innerHTML = `
         High Score: ${highScore}<br>
-        User: ${champ}
+        User: ${user}
         `
       document.getElementById('startOver').classList.remove('hide')
     })
@@ -220,7 +221,7 @@ const endGame = () => {
     document.getElementById('finalScore').innerHTML = `
       <p>Your score: ${score}</p>
       <p>High score: ${highScore}<br>
-      (by user: ${champ})</p>
+      (by user: ${user})</p>
       `
 
     // unhide finalScore element
