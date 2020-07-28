@@ -21,16 +21,16 @@
     <div class="row">
       
       <!-- Left side: View high score -->
-      <div id="highScore" class="col-4 highScore"></div>
+      <div id="highScore" class="col-4 highScore py-2 bg-success text-center align-middle"></div>
       
       <!-- Center: Current score -->
-      <div class="col-4 text-center">
+      <div id="scoreCount" class="col-4 py-2 bg-primary text-center align-middle">
         <p id="score"></p>
       </div>
       
       <!-- Right side: Timer -->
-      <div class="col-4 text-right">
-        Time left: <span id="time">90</span> seconds
+      <div id="countDown" class="col-4 py-2 bg-warning text-center align-middle">
+        Time left: <br><span id="time">90</span> seconds
       </div>
     </div>
   
@@ -40,14 +40,14 @@
 
     <Main class="jumbotron col-12">
       <!-- At launch, this div contains the title of the quiz. After clicking Start Quiz button, this div will be replaced with the questions -->
-      <div class="quiz">
+      <div>
         <h3 id="quiz" class="display-4">Coding Quiz Challenge</h3>
       </div>
-      <div class="quiz">
+      <div>
         <p id="feedback" class="feedback"></p>
         <h3 id="question" class="display-5 question hide"></h3>
       </div>
-      <div class="quiz">
+      <div>
         <h3 id="finished" class="display-4 finished hide">Finished!!</h3>
       </div>
       <hr class="my-4">

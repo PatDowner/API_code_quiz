@@ -6,7 +6,7 @@
 let highScore = 0
 
 // variable to store the initials of highScore holder
-let champ = 'No current high score'
+let userName = 'No current high score'
 
 // need something here to pull old highScore info OR allow for highScore = 0
 // recalls or set up array for logged scores
@@ -15,13 +15,13 @@ let scoreLog = JSON.parse(localStorage.getItem('scoreLog')) || []
 // if there's data in localStorage for scoreLog, use that to set the highScore and user
 for (let i = 0; i < scoreLog.length; i++) {
   highScore = scoreLog[i].highScore
-  champ = scoreLog[i].champ
+  userName = scoreLog[i].userName
 }
 
 // Display current highScore in HTML
 document.getElementById('highScore').innerHTML = `
 High Score: ${highScore}<br>
-User: ${champ}
+User: ${userName}
 `
 
 // Score counter variable
@@ -29,7 +29,8 @@ let score = 0
 
 // Display current score in HTML
 document.getElementById('score').innerHTML = `
-Current Score: ${score}
+Current<br>
+Score: ${score}
 `
 
 // Set timer start value
@@ -79,57 +80,12 @@ let qList = [
     Correct: 'D'
   }]
 
-
-// // new format of qList
-// let qList = [
-//   {
-//     Q: 'What color is the sky?',
-//     Correct: 'C',
-//     answers: [
-//       'Red',
-//       'Yellow',
-//       'Blue',
-//       'Green'
-//     ]
-//   },
-//   {
-//     Q: 'What character is not a Mario character?',
-//     Correct: 'B',
-//     answers: [
-//       'Mario',
-//       'Donky Kong',
-//       'Toad',
-//       'Yoshi'
-//     ]
-//   },
-//   {
-//     Q: 'The early bird gets the ____.',
-//     Correct: 'A',
-//     answers: [
-//       'worm',
-//       'prize',
-//       'work',
-//       'coffee'
-//     ]
-//   },
-//   {
-//     Q: 'In which Toy Story movie does Woody decide to become a lost toy?',
-//     Correct: 'D',
-//     answers: [
-//       'Toy Story 1',
-//       'Toy Story 2',
-//       'Toy Story 3',
-//       'Toy Story 4'
-//     ]
-//   }
-// ]
-
 console.log(qList)
 
 //create & define function newQ ()
 const newQ = function (x) {
   ansCLick = x
-
+  document.getElementById('feedback').className = 'feedback py-2 pl-3'
   // this was ansResult()
   if (qList[qNum].Correct === ansClick) {
     // run function isCorrect
@@ -149,6 +105,7 @@ const newQ = function (x) {
 
     getAns()
   } else {
+    clearInterval(timer)
     endGame()
   }
 }
@@ -159,12 +116,15 @@ const isCorrect = () => {
   Last answer: Correct!
   `
 
+  document.getElementById('feedback').classList.add('bg-success')
+
   // increase score by 1
   score++
 
   // Display current score in HTML
   document.getElementById('score').innerHTML = `
-  Current Score: ${score}
+  Current<br>
+  Score: ${score}
   `
 
   // record which answer they clicked, the word correct, and the current score
@@ -176,6 +136,8 @@ const isWrong = () => {
   document.getElementById('feedback').innerHTML = `
   Last answer: Wrong!
   `
+
+  document.getElementById('feedback').classList.add('bg-danger')
 
   // subtract 10 sec from timer
   seconds = seconds - 10
@@ -237,21 +199,21 @@ const endGame = () => {
       event.preventDefault()
 
       // clicking button makes 2 things happen:
-      // 1) log set champ = value of input and put that and highScore to localStorage
-      // set value of champ to be text of input
-      champ = document.getElementById('initials').value
+      // 1) log set userName = value of input and put that and highScore to localStorage
+      // set value of userName to be text of input
+      userName = document.getElementById('initials').value
 
 
       // array for local storage
       let scoreItem = {
         highScore: highScore,
-        champ: champ
+        userName: userName
       }
       // localStorage.setItem('scoreLog', scoreItem)
       scoreLog.push(scoreItem)
 
 
-      // store champ and highScore to localStorage
+      // store userName and highScore to localStorage
       localStorage.setItem('scoreLog', JSON.stringify(scoreLog))
 
       console.log(scoreLog.length)
@@ -263,13 +225,13 @@ const endGame = () => {
       document.getElementById('input').innerHTML = `
         <p>New high score saved!<br>
         High Score: ${highScore}<br>
-        User: ${champ}</p>
+        User: ${userName}</p>
         `
 
       // Display current high score in HTML
       document.getElementById('highScore').innerHTML = `
         High Score: ${highScore}<br>
-        User: ${champ}
+        User: ${userName}
         `
       document.getElementById('startOver').classList.remove('hide')
     })
@@ -279,7 +241,7 @@ const endGame = () => {
     document.getElementById('finalScore').innerHTML = `
       <p>Your score: ${score}</p>
       <p>High score: ${highScore}<br>
-      (by user: ${champ})</p>
+      (by user: ${userName})</p>
       `
 
     // unhide finalScore element
