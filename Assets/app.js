@@ -29,7 +29,7 @@ let score = 0
 
 // Display current score in HTML
 document.getElementById('score').innerHTML = `
-Score: ${score}
+Current Score: ${score}
 `
 
 // Set timer start value
@@ -98,7 +98,7 @@ const newQ = function (x) {
 
     // Display current score in HTML
     document.getElementById('score').innerHTML = `
-    Score: ${score}
+    Current Score: ${score}
     `
 
     // record which answer they clicked, the word correct, and the current score
