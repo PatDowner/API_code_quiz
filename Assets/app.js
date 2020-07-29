@@ -40,6 +40,14 @@ let ansClick = ''
 // List of questions to pull from. Q = questions, A-D = answers A-D, Correct = indicates correct answer
 let qList = [
   {
+    Q: 'Which of the following HTML tags is self-closing?',
+    A: '<li>',
+    B: '<a>',
+    C: '<img>',
+    D: '<p>',
+    Correct: 'C'
+  },
+  {
     Q: 'Which symbols are used to enclose an array?',
     A: '" "',
     B: ' < >',
@@ -87,14 +95,6 @@ let qList = [
     C: `You didn't put the whole thing in parentheses`,
     D: "You forgot to put myId into single quotes",
     Correct: 'D'
-  },
-  {
-    Q: 'Which of the following HTML tags is self-closing?',
-    A: 'li',
-    B: 'a',
-    C: 'img',
-    D: 'p',
-    Correct: 'C'
   },
   {
     Q: 'Which of the following has a different value than the others?',
@@ -308,7 +308,7 @@ document.getElementById('start').addEventListener('click', event => {
   document.getElementById('quiz').classList.add('hide')
 
   // display first question
-  document.getElementById('question').innerHTML = `
+  document.getElementById('question').textContent = `
   ${ qList[qNum].Q}
   `
 
@@ -317,19 +317,19 @@ document.getElementById('start').addEventListener('click', event => {
 
   // Populate answers for first question
   // answer A
-  document.getElementById('ansA').innerHTML = `
+  document.getElementById('ansA').textContent = `
   ${qList[qNum].A}
   `
   // answer B
-  document.getElementById('ansB').innerHTML = `
+  document.getElementById('ansB').textContent = `
   ${qList[qNum].B}
   `
   // answer C
-  document.getElementById('ansC').innerHTML = `
+  document.getElementById('ansC').textContent = `
   ${qList[qNum].C}
   `
   // answer D
-  document.getElementById('ansD').innerHTML = `
+  document.getElementById('ansD').textContent = `
   ${qList[qNum].D}
   `
 
