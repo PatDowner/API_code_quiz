@@ -118,7 +118,7 @@ let qList = [
     A: `console.log('what's wrong with this code')`,
     B: `console.log.'what's wrong with this code'`,
     C: "console.log(`what's wrong with this code`)",
-    D: 'There is nothing wrog with that code.',
+    D: 'There is nothing wrong with that code.',
     Correct: 'C'
   }
 
