@@ -48,6 +48,7 @@ body {
 /* make sure the answer buttons don't get too small in their columns */
 .ansBtn {
   width: 100%;
+  white-space: normal;
 }
 
 /* move the start over button a little further down the page */

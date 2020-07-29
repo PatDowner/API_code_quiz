@@ -40,37 +40,89 @@ let ansClick = ''
 // List of questions to pull from. Q = questions, A-D = answers A-D, Correct = indicates correct answer
 let qList = [
   {
-    Q: 'What color is the sky?',
-    A: 'Red',
-    B: 'Yellow',
-    C: 'Blue',
-    D: 'Green',
+    Q: 'Which symbols are used to enclose an array?',
+    A: '" "',
+    B: ' < >',
+    C: '( )',
+    D: '[ ]',
+    Correct: 'D'
+  },
+  {
+    Q: 'Which of the following does NOT mean "increase count by 1"?',
+    A: 'count++',
+    B: 'count = count + 1',
+    C: 'count = 1',
+    D: 'count += 1',
     Correct: 'C'
   },
   {
-    Q: 'What character is not a Mario character?',
-    A: 'Mario',
-    B: 'Donky Kong',
-    C: 'Toad',
-    D: 'Yoshi',
+    Q: 'With timer interval loops, what amount of time is indicated by the number 1000?',
+    A: '1000 seconds',
+    B: '1 second',
+    C: '1 millisecond',
+    D: '1 minute',
     Correct: 'B'
   },
   {
-    Q: 'The early bird gets the ____.',
-    A: 'worm',
-    B: 'prize',
-    C: 'work',
-    D: 'coffee',
+    Q: 'In the array letters[A, B, C, D], what value does letters[2] return?',
+    A: 'A',
+    B: 'B',
+    C: 'C',
+    D: 'D',
+    Correct: 'C'
+  },
+  {
+    Q: 'Which is not a type of data value in Javascript?',
+    A: 'variable',
+    B: 'string',
+    C: 'number',
+    D: 'boolean',
     Correct: 'A'
   },
   {
-    Q: 'In which Toy Story movie does Woody decide to become a lost toy?',
-    A: 'Toy Story 1',
-    B: 'Toy Story 2',
-    C: 'Toy Story 3',
-    D: 'Toy Story 4',
+    Q: `What's wrong with this code?:
+        document.getElementById(myId)`,
+    A: '"document" should be "Document"',
+    B: `You can't get an element by its id`,
+    C: `You didn't put the whole thing in parentheses`,
+    D: "You forgot to put myId into single quotes",
     Correct: 'D'
-  }]
+  },
+  {
+    Q: 'Which of the following HTML tags is self-closing?',
+    A: 'li',
+    B: 'a',
+    C: 'img',
+    D: 'p',
+    Correct: 'C'
+  },
+  {
+    Q: 'Which of the following has a different value than the others?',
+    A: 'true',
+    B: 'false',
+    C: '!true',
+    D: '!!!true',
+    Correct: 'A'
+  },
+  {
+    Q: 'What terminal command would you type before pasting the repository URL to get a copy of a github repository onto your computer?',
+    A: 'git',
+    B: 'git hub',
+    C: 'git pull',
+    D: 'git clone',
+    Correct: 'D'
+  },
+  {
+    Q: `Which of these correctly fixes following code:
+    console(log).'what's wrong with this code?'`,
+    A: `console.log('what's wrong with this code')`,
+    B: `console.log.'what's wrong with this code'`,
+    C: "console.log(`what's wrong with this code`)",
+    D: 'There is nothing wrog with that code.',
+    Correct: 'C'
+  }
+
+]
 
 //function newQ evaluates answer of previous question, then produces feedback about answer while displaying next question
 const newQ = function (x) {
