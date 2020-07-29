@@ -5,7 +5,11 @@ This is a multiple-choice online quiz built using HTML, CSS, and JavaScript. The
 At the end of the quiz, the user's score will display. If their score is a new high score, they will be prompted for their initials, which they can then save as the high score that is displayed on the page.
 
 #App Preview
-[image of the app]
+![landing screen](./Assets/images/landing_screen.png)
+
+![questions screen](./Assets/images/questions_screen.png)
+![finish screen](./Assets/images/finish_screen.png)
+![submitted high score](./Assets/images/submitted_high_score.png)
 
 #Development Notes
 
@@ -33,11 +37,10 @@ The app's HTML and CSS utilizes Bootstrap.
 * High score list that reveals more than 1 top score. Perhaps top 5 organized greatest to least.
 * Randomize the order that questions appear during the quiz.
 
-### Review
-
-You are required to submit the following for review:
+### Deployed
 
 * The URL of the functional, deployed application:
 https://patdowner.github.io/API_code_quiz/
 
-* The URL of the GitHub repository: https://github.com/PatDowner/API_code_quiz.git
+* The URL of the GitHub repository:
+https://github.com/PatDowner/API_code_quiz.git
