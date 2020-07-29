@@ -3,17 +3,22 @@ body {
   background-color: rgb(63, 63, 63);
 }
 
-/* Hides various divs when applied. Class applied and removed throughout the app.js file */
+/* Hides various divs when applied. Class applied and removed throughout the app.js file to hide and reveal elements as needed */
 .hide {
   display: none;
 }
 
+/* This impacts the elements in the header */
 #highScore, #score, #countDown {
+  /* lower opacity to make the colors a little less intense */
   opacity: .9;
-  font: 24px bolder;
+  /* set font to match the font from the Bootstrap .jumbotron I used for the main part of the page */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* set a reasonable font size */
+  font: 24px bolder;
 }
 
+/* the format for #highScore, #countDown, and .jumbotron together serve to make the header and main part of the body together have rounded outside corners, but smooth vertical lines connecting the header to the main part of body */
 #highScore {
   border-top-left-radius: 4.8px;
 }
@@ -28,30 +33,36 @@ body {
 
 }
 
+/* set font size and also made font family match the rest of the page */
 #feedback {
-  font-size: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px;
   height: 46px;
 }
 
+/* set a minimum height so that the question div doesn't resize for every single question */
 #question {
   min-height: 100px;
 }
 
+/* make sure the answer buttons don't get too small in their columns */
 .ansBtn {
   width: 100%;
 }
 
+/* move the start over button a little further down the page */
 #startOver {
   margin-top: 32px;
 }
 
+/* on smaller screens, the header font size needs to be smaller or it line breaks in really ugly ways */
 @media only screen and (max-width: 540px) {
   #highScore, #score, #countDown {
     font: 18px bolder;
   }
 }
 
+/* on the smallest screens (Galaxy Fold), the font size needed to be even smaller still to avoid excessivly ugly breaks */
 @media only screen and (max-width: 329px) {
   #highScore, #score, #countDown {
     font: 14px bolder;
