@@ -191,7 +191,7 @@ const endGame = () => {
     // unhide finalScore element
     document.getElementById('finalScore').classList.remove('hide')
 
-    document.getElementById('initialsSet').classList.remove('hide')
+    document.getElementById('userSet').classList.remove('hide')
 
     document.getElementById('save').addEventListener('click', event => {
       event.preventDefault()
@@ -213,10 +213,11 @@ const endGame = () => {
 
       // display confirmation that new highScore is saved
       document.getElementById('input').innerHTML = `
-        <p class="text-success">New high score saved!<br>
-        High Score: ${highScore}<br>
-        User: ${userName}</p>
-        `
+      <p class="text-success">New high score saved!<br>
+      High Score: ${highScore}<br>
+      User: ${userName}</p>
+      `
+      document.getElementById('save').classList.add('hide')
 
       // Display current high score in HTML
       document.getElementById('highScore').innerHTML = `
@@ -234,29 +235,6 @@ const endGame = () => {
     <p>High score: ${highScore}<br>
     (by user: ${userName})</p>
     `
-    // <div class="row">
-    // <div class="col-sm-4">
-    //   <p>Your score: ${highScore}</p>
-    // </div>
-    // <div class="col-sm-6">
-    //   <table class="table text-center">
-    //     <thead>
-    //       <tr class="bg-dark text-light">
-    //         <th colspan="2">High Scores</th>
-    //       </tr>
-    //       <tr class="bg-secondary">
-    //         <th scope="col">User</th>
-    //         <th scope="col">Score</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       <tr>
-    //         <td>${userName}</td>
-    //         <td>${highScore}</td>
-    //       </tr>
-    //     </tbody>
-    //   </table>
-    // </div>
 
     // unhide finalScore element and start over button
     document.getElementById('finalScore').classList.remove('hide')
