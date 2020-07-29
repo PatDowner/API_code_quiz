@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,82 +15,96 @@
   <!-- my css -->
   <link rel="stylesheet" href="./Assets/style.css">
 </head>
+
 <body>
-  <!-- div for high score & timer -->
+
+  <!-- div for high score, current score, & timer -->
   <div class="container mt-3">
 
     <header class="row">
-      
+
       <!-- Left side: View high score -->
-      <div id="highScore" class="col-4 bg-success py-2 text-center align-middle"></div>
-      
+      <div id="highScore" class="col-4 bg-success py-3 text-center align-middle"></div>
+
       <!-- Center: Current score -->
-      <div id="scoreCount" class="col-4 bg-primary py-2 text-center align-middle">
-        <p id="score"></p>
-      </div>
-      
+      <div id="score" class="col-4 bg-primary py-3 text-center align-middle"></div>
+
       <!-- Right side: Timer -->
-      <div id="countDown" class="col-4 bg-warning py-2 text-center align-middle">
-        Time left: <br><span id="time">90</span> seconds
-      </div>
+      <div id="countDown" class="col-4 bg-warning py-3 text-center align-middle">Time left:<br><span
+          id="time">90</span>&nbsp;seconds</div>
     </header>
-    
+
     <!-- The main part of the page -->
     <div class="row">
-      
+
+      <!-- on launch, this Main div contains a number of divs that will be shown or hidden throughout the quiz. Class="hide" hides items-->
       <Main class="jumbotron col-12">
-        <!-- At launch, this div contains the title of the quiz. After clicking Start Quiz button, this div will be replaced with the questions -->
         <div>
+          <!-- quiz title -->
           <h3 id="quiz" class="display-4">Coding Quiz Challenge</h3>
         </div>
         <div>
+          <!-- feedback response for right (green) or wrong (red) answers. Color coded via JS & CSS -->
           <p id="feedback" class="feedback"></p>
+          <!-- the text of one question at a time appears here -->
           <h3 id="question" class="display-5 question hide"></h3>
         </div>
         <div>
+          <!-- at end of the quiz, this Finished text appears -->
           <h3 id="finished" class="display-4 finished hide">Finished!!</h3>
         </div>
-      <hr class="my-4">
-      <!-- At launch, this p contains game directions. After clicking Start Quiz button, this p will be replaced with the answer choice buttons that correspond to the question above. -->
-      <p id="instructions" class="lead instructions">
-        Try to answer the following code-related questions within the time limit. Any incorrect answers will penalize your score time by 10 seconds! Timer starts when you click the start quiz button.
-        <br><br>
-        <button id="start" class="btn btn-primary btn-lg start">Start Quiz</button>
-      </p>
-      <div id="answers" class="row hide">
-        <div class="col-lg-3 col-sm-6 my-2">
-          <button id="btnA" class="btn btn-primary btn-lg ansBtn btnA">A. <span id="ansA"></span></button>
+        <!-- little grey horizontal rule to split up the screen -->
+        <hr class="my-4">
+        <!-- instructions and introduction for the quiz itself -->
+        <p id="instructions" class="lead instructions">
+          Try to answer the following code-related questions within the time limit. Any incorrect answers will penalize
+          your score time by 10 seconds! Timer starts when you click the start quiz button.
+          <br><br>
+          <!-- start quiz button -->
+          <button id="start" class="btn btn-primary btn-lg start">Start Quiz</button>
+        </p>
+        <!-- Field of 4 buttons, each one populated with one of the answers to the given question. The text of the buttons is replaced with the corresponding answers for each successive question -->
+        <div id="answers" class="row hide">
+          <!-- answer A of current question-->
+          <div class="col-lg-3 col-sm-6 my-2">
+            <button id="btnA" class="btn btn-primary btn-lg ansBtn btnA">A. <span id="ansA"></span></button>
+          </div>
+          <!-- answer B of current question-->
+          <div class="col-lg-3 col-sm-6 my-2">
+            <button id="btnB" class="btn btn-primary btn-lg ansBtn btnB">B. <span id="ansB"></span></button>
+          </div>
+          <!-- answer C of current question-->
+          <div class="col-lg-3 col-sm-6 my-2">
+            <button id="btnC" class="btn btn-primary btn-lg ansBtn btnC">C. <span id="ansC"></span></button>
+          </div>
+          <!-- answer D of current question-->
+          <div class="col-lg-3 col-sm-6 my-2">
+            <button id="btnD" class="btn btn-primary btn-lg ansBtn btnD">D. <span id="ansD"></span></button>
+          </div>
         </div>
-        <div class="col-lg-3 col-sm-6 my-2">
-          <button id="btnB" class="btn btn-primary btn-lg ansBtn btnB">B. <span id="ansB"></span></button>
-        </div>
-        <div class="col-lg-3 col-sm-6 my-2">
-          <button id="btnC" class="btn btn-primary btn-lg ansBtn btnC">C. <span id="ansC"></span></button>          
-        </div>
-        <div class="col-lg-3 col-sm-6 my-2">
-          <button id="btnD" class="btn btn-primary btn-lg ansBtn btnD">D. <span id="ansD"></span></button>
-        </div>
-      </div>
-      <!-- <p id="answers" class="lead answers hide"> -->
-        <!-- add columns col-lg-3 col-sm-6-->
-        <!-- </p> -->
-        <p id="finalScore" class="finalScore hide"></p>
-        <p id="setHS" class="setHS">
-          <form id="initialsSet" class="hide">
-            <p id="input">
+        <!-- Text that's displayed for your final score -->
+        <h3 id="finalScore" class="finalScore display-5 hide"></h3>
+        <form id="initialsSet" class="hide">
+          <!-- div for inputting a username if you achieve a high score -->
+          <div id="input" class="form-group">
+            <!-- visible text -->
             <label for="initials">Your initials: </label>
+            <!-- text input box -->
             <input type="text" name="initials" id="initials" placeholder="your initials">
+          </div>
+          <div>
+            <!-- save high score button -->
             <button id="save" class="btn btn-primary btn-lg save">Save High Score</button>
-          </p>
+          </div>
         </form>
-      </p>
-      <button id=startOver class="btn btn-primary btn-lg hide">Start Over</button>
+        <button id=startOver class="btn btn-primary btn-lg hide">Start Over</button>
+    </div>
     </Main>
-    
+
   </div>
-</div>
-  
-  
+  </div>
+
+
 
 
 
@@ -97,13 +112,17 @@
 
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
   <!-- my JS -->
   <script src="./Assets/app.js"></script>
 </body>
+
 </html>
